@@ -100,13 +100,39 @@
                 <a href="#" class="hidden md:block bg-barber-gold hover:bg-white text-barber-dark font-bold text-s uppercase tracking-widest py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
                     Reservasi
                 </a>
-                <button class="md:hidden text-white focus:outline-none z-50">
-                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none z-50 relative w-8 h-8">
+                    <svg id="icon-open" class="w-7 h-7 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <svg id="icon-close" class="w-7 h-7 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 rotate-90 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                 </button>
             </div>
         </div>
+        <div id="mobile-menu" class="fixed inset-0 bg-barber-dark/98 backdrop-blur-lg z-40 flex flex-col items-center justify-center opacity-0 pointer-events-none transition-opacity duration-500 md:hidden px-6 overflow-hidden">
+        
+        <ul class="flex flex-col items-center gap-6 w-full text-lg uppercase tracking-wider font-display text-white text-center">
+            <li class="mobile-link translate-y-8 opacity-0 transition-all duration-500 delay-100 w-full">
+                <a href="#about" class="hover:text-barber-gold transition-colors block py-2">Tentang</a>
+            </li>
+            <li class="mobile-link translate-y-8 opacity-0 transition-all duration-500 delay-200 w-full">
+                <a href="#services" class="hover:text-barber-gold transition-colors block py-2">Layanan</a>
+            </li>
+            <li class="mobile-link translate-y-8 opacity-0 transition-all duration-500 delay-300 w-full">
+                <a href="#gallery" class="hover:text-barber-gold transition-colors block py-2">Galeri</a>
+            </li>
+            <li class="mobile-link translate-y-8 opacity-0 transition-all duration-500 delay-400 w-full">
+                <a href="#location" class="hover:text-barber-gold transition-colors block py-2">Lokasi</a>
+            </li>
+        </ul>
+
+        <div class="mobile-link translate-y-8 opacity-0 transition-all duration-500 delay-500 mt-10 w-full flex justify-center">
+            <a href="#" class="bg-barber-gold hover:bg-white text-barber-dark font-bold text-[12px] uppercase tracking-wider py-3 px-8 rounded-full transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(197,160,89,0.3)] w-full max-w-[250px] text-center">
+                Reservasi Sekarang
+            </a>
+        </div>
+    </div>
     </nav>
 
     <section class="relative h-screen w-full flex items-center justify-center overflow-hidden">
@@ -426,8 +452,8 @@
     </section>
 
     <footer class="bg-black pt-20 pb-10 relative overflow-hidden border-t border-zinc-900 z-10">
-        <div class="absolute bottom-[-5%] left-0 w-full overflow-hidden flex justify-center pointer-events-none z-0 opacity-[0.04] select-none">
-            <span class="font-display text-[12vw] md:text-[7.2vw] font-bold text-white whitespace-nowrap leading-none uppercase tracking-widest">
+        <div class="absolute bottom-[25%] sm:bottom-[0%] left-0 w-full overflow-hidden flex justify-center pointer-events-none z-0 opacity-[0.06] select-none">
+            <span class="font-display text-[7.2vw] md:text-[7.2vw] font-bold text-white whitespace-nowrap leading-none uppercase tracking-widest">
                 TRISASSOR BARBER HOUSE
             </span>
         </div>
@@ -446,7 +472,7 @@
                 <div class="grid grid-cols-2 gap-8 md:gap-24 w-full md:w-auto mt-8 md:mt-0">
                     <div>
                         <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Jelajahi</h4>
-                        <ul class="space-y-4 text-zinc-500 text-s sm:text-sm font-semibold tracking-wider uppercase">
+                        <ul class="space-y-4 text-zinc-500 text-s md:text-base font-semibold tracking-wider uppercase">
                             <li><a href="#about" class="hover:text-barber-gold transition-colors duration-300">Tentang</a></li>
                             <li><a href="#services" class="hover:text-barber-gold transition-colors duration-300">Layanan</a></li>
                             <li><a href="#gallery" class="hover:text-barber-gold transition-colors duration-300">Galeri</a></li>
@@ -455,10 +481,9 @@
                     </div>
                     <div>
                         <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Sosial</h4>
-                        <ul class="space-y-4 text-zinc-500 text-s sm:text-sm font-semibold tracking-wider uppercase">
-                            <li><a href="#" class="hover:text-barber-gold transition-colors duration-300">Instagram</a></li>
-                            <li><a href="#" class="hover:text-barber-gold transition-colors duration-300">TikTok</a></li>
-                            <li><a href="#" class="hover:text-barber-gold transition-colors duration-300">YouTube</a></li>
+                        <ul class="space-y-4 text-zinc-500 text-s md:text-base font-semibold tracking-wider uppercase">
+                            <li><a href="https://www.instagram.com/trisassorbarberhouse/" class="hover:text-barber-gold transition-colors duration-300">Instagram</a></li>
+                            <li><a href="https://www.tiktok.com/@trisassor.barberhouse" class="hover:text-barber-gold transition-colors duration-300">TikTok</a></li>
                         </ul>
                     </div>
                 </div>
@@ -468,10 +493,10 @@
                 <p class="text-zinc-600 text-[10px] md:text-s tracking-[0.2em] uppercase font-bold">
                     © 2026 TRISASSOR BARBER HOUSE. All rights reserved.
                 </p>
-                <div class="flex items-center justify-center gap-2 text-zinc-600 text-[10px] md:text-s tracking-[0.2em] uppercase font-bold">
-                    <span>Designed by <span class="text-barber-gold">XAAS</span> with</span>
-                    <svg class="w-3 h-3 text-barber-gold" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path></svg>
-                    <span>Precision</span>
+                <div class="text-center md:text-right text-zinc-600 text-[10px] md:text-xs tracking-[0.1em] md:tracking-[0.2em] uppercase font-bold leading-loose mt-4 md:mt-0">
+                    Designed by <span class="text-barber-gold">XAAS</span> with 
+                    <svg class="inline-block w-3 h-3 text-barber-gold mx-0.5 mb-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path></svg> 
+                    Precision
                 </div>
             </div>
         </div>
@@ -481,11 +506,72 @@
         document.addEventListener("DOMContentLoaded", function() {
             const navbar = document.getElementById('navbar');
             window.addEventListener('scroll', () => {
+                
                 if (window.scrollY > 50) {
                     navbar.classList.add('bg-barber-dark/95', 'backdrop-blur-sm', 'shadow-2xl');
                 } else {
                     navbar.classList.remove('bg-barber-dark/95', 'backdrop-blur-sm', 'shadow-2xl');
                 }
+            });
+
+            // --- Logika Mobile Menu ---
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const iconOpen = document.getElementById('icon-open');
+            const iconClose = document.getElementById('icon-close');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            const allMenuAnchors = mobileMenu.querySelectorAll('a');
+
+            let isMenuOpen = false;
+
+            function toggleMenu() {
+                isMenuOpen = !isMenuOpen;
+                
+                if (isMenuOpen) {
+                    // Munculkan background overlay
+                    mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+                    mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
+                    
+                    // Transisi ikon (Hamburger muter jadi X)
+                    iconOpen.classList.add('opacity-0', '-rotate-90');
+                    iconClose.classList.remove('opacity-0', 'rotate-90');
+                    
+                    // Animasi teks menu meluncur naik
+                    mobileLinks.forEach(link => {
+                        link.classList.remove('translate-y-8', 'opacity-0');
+                        link.classList.add('translate-y-0', 'opacity-100');
+                    });
+
+                    // Kunci scroll halaman belakang
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    // Sembunyikan background overlay
+                    mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+                    mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+                    
+                    // Transisi ikon kembali ke Hamburger
+                    iconOpen.classList.remove('opacity-0', '-rotate-90');
+                    iconClose.classList.add('opacity-0', 'rotate-90');
+                    
+                    // Reset posisi teks menu
+                    mobileLinks.forEach(link => {
+                        link.classList.add('translate-y-8', 'opacity-0');
+                        link.classList.remove('translate-y-0', 'opacity-100');
+                    });
+
+                    // Kembalikan scroll halaman
+                    document.body.style.overflow = '';
+                }
+            }
+
+            // Pasang event klik ke tombol
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+
+            // Jika user mengklik salah satu menu, tutup overlay-nya
+            allMenuAnchors.forEach(anchor => {
+                anchor.addEventListener('click', () => {
+                    if(isMenuOpen) toggleMenu();
+                });
             });
 
             const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right, .offscreen-right');
