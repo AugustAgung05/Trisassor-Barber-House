@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ & Etiquette | TRISASSOR Barber House</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Temukan jawaban atas pertanyaan umum, etika keterlambatan, dan kebijakan pembatalan di TRISASSOR Barber House.">
+    <link rel="icon" type="image/png" href="logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        barber: {
+                            gold: '#C5A059',
+                            dark: '#09090b',
+                            gray: '#1A1A1A',
+                            light: '#f4f4f5'
+                        }
+                    },
+                    fontSize: {
+                        's': '12px',
+                    },
+                    fontFamily: {
+                        'sans': ['Montserrat', 'sans-serif'],
+                        'display': ['Oswald', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        '4xl': '2rem',
+                    },
+                    spacing: {
+                        '18': '4.5rem',
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 1s ease-out forwards',
+                        'scroll-down': 'scrollDown 1.5s infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        scrollDown: {
+                            '0%, 100%': { transform: 'translateY(0)', opacity: '1' },
+                            '50%': { transform: 'translateY(10px)', opacity: '0.3' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Oswald:wght@500;700&family=Bebas+Neue&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <style>
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal-up.active {
+            opacity: 1;
+            transform: translate(0);
+        }
+
+        .delay-150 {
+            transition-delay: 0.15s;
+        }
+
+        .delay-300 {
+            transition-delay: 0.3s;
+        }
+
+        .delay-450 {
+            transition-delay: 0.45s;
+        }
+
+        /* Custom scrollbar for better UX */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #09090b;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #27272a;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #C5A059;
+        }
+    </style>
+</head>
+
+<body class="bg-barber-dark text-barber-light font-sans antialiased overflow-x-hidden">
+
+    <!-- Navbar Wrapper -->
+    <div class="relative z-50">
+
+        <!-- Navbar Utama -->
+        <nav id="navbar" class="fixed left-0 right-0 mx-auto z-50 flex justify-between items-center transition-all
+             duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] top-0 w-full max-w-full bg-white/0 backdrop-blur-none shadow-none
+              rounded-none py-5 px-6 md:px-18">
+
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-2 group z-50">
+                <img src="./logo.png" alt="Trisassor Logo"
+                    class="h-8 md:h-10 w-auto object-contain group-hover:scale-105 transition-transform duration-300 ml-2">
+                <span
+                    class="font-display text-base lg:text-lg font-bold tracking-widest text-white uppercase">trisassor</span>
+            </a>
+
+            <!-- Menu Desktop -->
+            <div
+                class="hidden lg:flex items-center gap-6 xl:gap-8 text-xs uppercase tracking-widest font-semibold text-gray-300">
+                <a href="index.html" class="hover:text-barber-gold transition-colors duration-300">Beranda</a>
+                <a href="experience.html" class="hover:text-barber-gold transition-colors duration-300">Experience</a>
+                <a href="barbers.html" class="hover:text-barber-gold transition-colors duration-300">Kapster</a>
+                <a href="journal.html" class="hover:text-barber-gold transition-colors duration-300">Journal</a>
+                <a href="faq.html" class="text-barber-gold transition-colors duration-300">FAQ</a>
+            </div>
+
+            <!-- Bagian Kanan (Tombol & User) -->
+            <div class="hidden lg:flex items-center gap-4">
+                <a href="#"
+                    class="text-xs uppercase tracking-widest text-zinc-400 hover:text-white transition-colors font-semibold pr-4 border-r border-zinc-700">
+                    Masuk
+                </a>
+                <a href="#"
+                    class="bg-barber-gold hover:bg-white text-barber-dark font-bold text-xs uppercase tracking-widest py-2.5 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-barber-gold/20 mr-2">
+                    Reservasi
+                </a>
+            </div>
+
+            <!-- Tombol Hamburger Mobile -->
+            <button id="mobile-menu-btn" class="lg:hidden text-white focus:outline-none z-50 relative w-8 h-8">
+                <!-- Icon Garis 3 -->
+                <svg id="icon-open" class="w-7 h-7 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <!-- Icon Silang (Close) -->
+                <svg id="icon-close" class="hidden w-7 h-7 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu (Full Screen Overlay) -->
+        <div id="mobile-menu"
+            class="hidden fixed inset-0 z-40 bg-zinc-950/95 backdrop-blur-xl flex-col justify-center items-center opacity-0 transition-opacity duration-300">
+            <div class="flex flex-col items-center gap-8 text-center w-full px-6">
+                <a href="index.html"
+                    class="text-2xl font-display font-bold uppercase tracking-widest text-white hover:text-barber-gold transition-colors duration-300 mobile-link">Beranda</a>
+                <a href="experience.html"
+                    class="text-2xl font-display font-bold uppercase tracking-widest text-white hover:text-barber-gold transition-colors duration-300 mobile-link">Experience</a>
+                <a href="barbers.html"
+                    class="text-2xl font-display font-bold uppercase tracking-widest text-white hover:text-barber-gold transition-colors duration-300 mobile-link">Kapster</a>
+                <a href="journal.html"
+                    class="text-2xl font-display font-bold uppercase tracking-widest text-white hover:text-barber-gold transition-colors duration-300 mobile-link">Journal</a>
+                <a href="faq.html"
+                    class="text-2xl font-display font-bold uppercase tracking-widest text-barber-gold transition-colors duration-300 mobile-link">FAQ</a>
+
+                <div class="w-24 h-px bg-zinc-800 my-4"></div>
+
+                <a href="#"
+                    class="text-sm font-semibold uppercase tracking-widest text-zinc-400 hover:text-white transition-colors mobile-link">Masuk</a>
+                <a href="#"
+                    class="bg-barber-gold text-barber-dark font-bold text-sm uppercase tracking-widest py-3 px-10 rounded-full mt-4 mobile-link">Reservasi</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Navbar -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navbar = document.getElementById('navbar');
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const iconOpen = document.getElementById('icon-open');
+            const iconClose = document.getElementById('icon-close');
+            let isMenuOpen = false;
+
+            // Logika Scroll
+            function handleScroll() {
+                if (window.scrollY > 20) {
+                    navbar.className = "fixed left-0 right-0 mx-auto z-50 flex justify-between items-center transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] top-4 w-[95%] max-w-6xl bg-white/10 backdrop-blur-lg shadow-2xl rounded-4xl py-3 px-6 md:px-2";
+                } else {
+                    navbar.className = "fixed left-0 right-0 mx-auto z-50 flex justify-between items-center transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] top-0 w-full max-w-full bg-white/0 backdrop-blur-none shadow-none rounded-none py-5 px-6 md:px-18";
+                }
+            }
+
+            handleScroll();
+            window.addEventListener('scroll', handleScroll);
+
+            // Logika Menu Mobile
+            function toggleMenu() {
+                isMenuOpen = !isMenuOpen;
+                if (isMenuOpen) {
+                    mobileMenu.classList.remove('hidden');
+                    setTimeout(() => {
+                        mobileMenu.classList.remove('opacity-0');
+                        mobileMenu.classList.add('opacity-100', 'flex');
+                    }, 10);
+
+                    iconOpen.classList.add('hidden');
+                    iconClose.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    mobileMenu.classList.remove('opacity-100');
+                    mobileMenu.classList.add('opacity-0');
+
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenu.classList.remove('flex');
+                    }, 300);
+
+                    iconOpen.classList.remove('hidden');
+                    iconClose.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (isMenuOpen) toggleMenu();
+                });
+            });
+        });
+    </script>
+
+    <!-- Header / Hero Section -->
+    <header class="relative pt-40 pb-20 md:pt-48 md:pb-24 overflow-hidden border-b border-zinc-900 bg-zinc-950">
+        <!-- Background Effects -->
+        <div class="absolute top-0 right-0 w-full md:w-1/2 h-full bg-barber-gold/5 blur-[120px] pointer-events-none">
+        </div>
+        <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10 text-center">
+            <h1
+                class="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-white uppercase tracking-tighter mb-6 reveal-up">
+                Tanya Jawab & <br class="md:hidden"> <span class="text-barber-gold">Aturan Main</span>
+            </h1>
+            <p class="text-zinc-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed reveal-up delay-150">
+                Semua hal yang perlu kamu tahu sebelum duduk di kursi eksekusi kami. Pahami alurnya, taati aturannya,
+                dan nikmati pengalaman potong rambut terbaikmu.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content FAQ & Accordion -->
+    <main class="py-24 relative z-10 bg-barber-dark">
+        <div class="max-w-4xl mx-auto px-6 md:px-12">
+
+            <!-- Category 1: Pertanyaan Umum -->
+            <section class="mb-20 reveal-up">
+                <div class="flex items-center gap-4 mb-8">
+                    <div
+                        class="w-8 h-8 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-barber-gold">
+                        <span class="font-bold text-sm">01</span>
+                    </div>
+                    <h2 class="font-display text-2xl md:text-3xl font-bold text-white uppercase tracking-widest">
+                        Pertanyaan Umum</h2>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Accordion Item 1.1 -->
+                    <div
+                        class="bg-zinc-950/50 border border-zinc-900 hover:border-zinc-700 transition-colors duration-300 rounded-2xl overflow-hidden group">
+                        <button
+                            class="accordion-btn w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none">
+                            <span class="font-bold text-white uppercase tracking-wider text-sm md:text-base pr-8">Gimana
+                                cara booking jadwalnya?</span>
+                            <span
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center border border-zinc-800 group-hover:border-barber-gold transition-colors duration-300">
+                                <svg class="w-4 h-4 text-barber-gold transform transition-transform duration-300 accordion-icon"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out accordion-content">
+                            <div class="px-6 pb-6 pt-2 text-zinc-400 text-sm md:text-base leading-relaxed">
+                                Gampang banget! Kamu bisa langsung klik tombol <strong
+                                    class="text-white">"Reservasi"</strong> di pojok kanan atas website ini, atau chat
+                                langsung ke admin kita via WhatsApp. Saran dari kita sih, booking minimal H-1 supaya
+                                kamu bebas pilih jam yang paling pas dan nggak keduluan yang lain.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item 1.2 -->
+                    <div
+                        class="bg-zinc-950/50 border border-zinc-900 hover:border-zinc-700 transition-colors duration-300 rounded-2xl overflow-hidden group">
+                        <button
+                            class="accordion-btn w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none">
+                            <span class="font-bold text-white uppercase tracking-wider text-sm md:text-base pr-8">Berapa
+                                lama waktu untuk satu kali potong rambut?</span>
+                            <span
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center border border-zinc-800 group-hover:border-barber-gold transition-colors duration-300">
+                                <svg class="w-4 h-4 text-barber-gold transform transition-transform duration-300 accordion-icon"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out accordion-content">
+                            <div class="px-6 pb-6 pt-2 text-zinc-400 text-sm md:text-base leading-relaxed">
+                                Rata-rata kapster kami butuh waktu sekitar <strong class="text-white">45 sampai 60
+                                    menit</strong>. Kami nggak mau buru-buru. Detail, kerapian, dan memastikan potongan
+                                rambutmu sesuai dengan ekspektasi adalah prioritas utama kami.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item 1.3 -->
+                    <div
+                        class="bg-zinc-950/50 border border-zinc-900 hover:border-zinc-700 transition-colors duration-300 rounded-2xl overflow-hidden group">
+                        <button
+                            class="accordion-btn w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none">
+                            <span class="font-bold text-white uppercase tracking-wider text-sm md:text-base pr-8">Boleh
+                                bawa anak kecil ke barbershop nggak?</span>
+                            <span
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center border border-zinc-800 group-hover:border-barber-gold transition-colors duration-300">
+                                <svg class="w-4 h-4 text-barber-gold transform transition-transform duration-300 accordion-icon"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out accordion-content">
+                            <div class="px-6 pb-6 pt-2 text-zinc-400 text-sm md:text-base leading-relaxed">
+                                Tentu saja boleh, jagoan kecil juga butuh tampil keren! Namun, untuk menjaga kenyamanan
+                                dan ketenangan pelanggan lain (mengingat ada penggunaan benda tajam), mohon kerjasamanya
+                                agar si kecil tetap dalam pengawasan selama berada di area barbershop ya.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Category 2: Etika Keterlambatan -->
+            <section class="mb-20 reveal-up delay-150">
+                <div class="flex items-center gap-4 mb-8">
+                    <div
+                        class="w-8 h-8 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-barber-gold">
+                        <span class="font-bold text-sm">02</span>
+                    </div>
+                    <h2 class="font-display text-2xl md:text-3xl font-bold text-white uppercase tracking-widest">Etika
+                        Keterlambatan</h2>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Accordion Item 2.1 -->
+                    <div
+                        class="bg-zinc-950/50 border border-zinc-900 hover:border-zinc-700 transition-colors duration-300 rounded-2xl overflow-hidden group">
+                        <button
+                            class="accordion-btn w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none">
+                            <span class="font-bold text-white uppercase tracking-wider text-sm md:text-base pr-8">Apakah
+                                ada batas toleransi telat datang?</span>
+                            <span
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center border border-zinc-800 group-hover:border-barber-gold transition-colors duration-300">
+                                <svg class="w-4 h-4 text-barber-gold transform transition-transform duration-300 accordion-icon"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out accordion-content">
+                            <div class="px-6 pb-6 pt-2 text-zinc-400 text-sm md:text-base leading-relaxed">
+                                Ada kok. Kami paham kadang jalanan macet atau ada urusan mendadak. Oleh karena itu, kami
+                                memberikan toleransi keterlambatan maksimal <strong class="text-barber-gold">15
+                                    menit</strong> dari jadwal booking yang sudah disepakati. Lebih dari itu, kami punya
+                                hak untuk menyesuaikan jadwalmu.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item 2.2 -->
+                    <div
+                        class="bg-zinc-950/50 border border-zinc-900 hover:border-zinc-700 transition-colors duration-300 rounded-2xl overflow-hidden group">
+                        <button
+                            class="accordion-btn w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none">
+                            <span class="font-bold text-white uppercase tracking-wider text-sm md:text-base pr-8">Gimana
+                                kalau telatnya lebih dari 15 menit?</span>
+                            <span
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center border border-zinc-800 group-hover:border-barber-gold transition-colors duration-300">
+                                <svg class="w-4 h-4 text-barber-gold transform transition-transform duration-300 accordion-icon"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out accordion-content">
+                            <div class="px-6 pb-6 pt-2 text-zinc-400 text-sm md:text-base leading-relaxed">
+                                Demi menghargai waktu pelanggan lain yang sudah booking setelah jadwalmu, mohon maaf
+                                banget jadwalmu terpaksa kami <strong class="text-white">batalkan secara
+                                    otomatis</strong> atau kami lemparkan ke sistem *waiting list*. Kami harap kamu
+                                mengerti, karena keterlambatan satu orang akan mengacaukan antrean seharian penuh.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Category 3: Kebijakan Pembatalan -->
+            <section class="reveal-up delay-300">
+                <div class="flex items-center gap-4 mb-8">
+                    <div
+                        class="w-8 h-8 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-barber-gold">
+                        <span class="font-bold text-sm">03</span>
+                    </div>
+                    <h2 class="font-display text-2xl md:text-3xl font-bold text-white uppercase tracking-widest">
+                        Kebijakan Pembatalan</h2>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Accordion Item 3.1 -->
+                    <div
+                        class="bg-zinc-950/50 border border-zinc-900 hover:border-zinc-700 transition-colors duration-300 rounded-2xl overflow-hidden group">
+                        <button
+                            class="accordion-btn w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none">
+                            <span class="font-bold text-white uppercase tracking-wider text-sm md:text-base pr-8">Bisa
+                                nggak sih ubah jam atau reschedule?</span>
+                            <span
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center border border-zinc-800 group-hover:border-barber-gold transition-colors duration-300">
+                                <svg class="w-4 h-4 text-barber-gold transform transition-transform duration-300 accordion-icon"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out accordion-content">
+                            <div class="px-6 pb-6 pt-2 text-zinc-400 text-sm md:text-base leading-relaxed">
+                                Bisa banget dong! Kalau tiba-tiba ada urusan mendadak, tolong kabari admin kami maksimal
+                                <strong class="text-barber-gold">3 jam sebelum</strong> jadwal aslimu. Kami akan bantu
+                                cariin slot kosong lain tanpa masalah.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item 3.2 -->
+                    <div
+                        class="bg-zinc-950/50 border border-zinc-900 hover:border-zinc-700 transition-colors duration-300 rounded-2xl overflow-hidden group">
+                        <button
+                            class="accordion-btn w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none">
+                            <span class="font-bold text-white uppercase tracking-wider text-sm md:text-base pr-8">Terus,
+                                kalau mau batalin booking sepenuhnya gimana?</span>
+                            <span
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center border border-zinc-800 group-hover:border-barber-gold transition-colors duration-300">
+                                <svg class="w-4 h-4 text-barber-gold transform transition-transform duration-300 accordion-icon"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out accordion-content">
+                            <div class="px-6 pb-6 pt-2 text-zinc-400 text-sm md:text-base leading-relaxed">
+                                Nggak masalah, kami ngerti kadang ada hal di luar kendali. Sama seperti reschedule,
+                                tolong banget kabari kami <strong class="text-white">minimal 3 jam sebelumnya</strong>.
+                                Kabar dari kamu sangat berharga supaya slot yang kosong bisa dipakai oleh pelanggan lain
+                                yang mungkin lagi butuh potong rambut darurat.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item 3.3 -->
+                    <div
+                        class="bg-zinc-950/50 border border-zinc-900 hover:border-zinc-700 transition-colors duration-300 rounded-2xl overflow-hidden group">
+                        <button
+                            class="accordion-btn w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none">
+                            <span class="font-bold text-white uppercase tracking-wider text-sm md:text-base pr-8">Ada
+                                sanksi nggak kalau sering cancel mendadak?</span>
+                            <span
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center border border-zinc-800 group-hover:border-barber-gold transition-colors duration-300">
+                                <svg class="w-4 h-4 text-barber-gold transform transition-transform duration-300 accordion-icon"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out accordion-content">
+                            <div class="px-6 pb-6 pt-2 text-zinc-400 text-sm md:text-base leading-relaxed">
+                                Sebagai komitmen menjaga kedisiplinan dan menghargai waktu kapster kami, jika kamu
+                                membatalkan mendadak (kurang dari 3 jam) atau "no-show" (nggak datang tanpa kabar) lebih
+                                dari <strong class="text-red-400">2 kali berturut-turut</strong>, mohon maaf sistem
+                                reservasi kamu ke depannya mungkin akan dibatasi atau kami prioritaskan untuk *walk-in*
+                                saja.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black pt-16 pb-8 relative overflow-hidden border-t border-zinc-900 z-10">
+        <div
+            class="absolute bottom-[25%] sm:bottom-[0%] left-0 w-full overflow-hidden flex justify-center pointer-events-none z-0 opacity-[0.15] sm:opacity-[0.07] select-none">
+            <span
+                class="font-display text-[7.2vw] md:text-[7.2vw] font-bold text-white whitespace-nowrap leading-none uppercase tracking-widest">
+                TRISASSOR BARBER HOUSE
+            </span>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-20 reveal-up">
+                <div class="md:w-1/2">
+                    <a href="index.html" class="inline-flex items-center mb-6 group">
+                        <img src="logo.png" alt="TRISASSOR Logo"
+                            class="h-10 md:h-12 w-auto object-contain group-hover:scale-110 transition-transform duration-300">
+                    </a>
+                    <p class="text-zinc-500 max-w-sm text-s md:text-base leading-relaxed">
+                        Mendefinisikan ulang standar maskulin. Kami tidak sekadar memotong rambut, kami memahat karakter
+                        untuk para pria modern.
+                    </p>
+                </div>
+
+                <div class="w-full md:w-auto mt-8 md:mt-0">
+                    <div>
+                        <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Sosial</h4>
+                        <ul class="space-y-4 text-zinc-500 text-s md:text-base font-semibold tracking-wider uppercase">
+                            <li><a href="https://www.instagram.com/trisassorbarberhouse/" target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="hover:text-barber-gold transition-colors duration-300">Instagram</a></li>
+                            <li><a href="https://www.tiktok.com/@trisassor.barberhouse" target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="hover:text-barber-gold transition-colors duration-300">TikTok</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-zinc-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+                <p class="text-zinc-600 text-[10px] md:text-s tracking-[0.1em] md:tracking-[0.2em] uppercase font-bold">
+                    © 2026 TRISASSOR BARBER HOUSE. All rights reserved.
+                </p>
+                <div
+                    class="text-center md:text-right text-zinc-600 text-[10px] md:text-xs tracking-[0.1em] md:tracking-[0.2em] uppercase font-bold leading-loose mt-4 md:mt-0">
+                    Designed by <span class="text-barber-gold">XAAS</span> with
+                    <svg class="inline-block w-3 h-3 text-barber-gold mx-0.5 mb-0.5" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path fill-rule="evenodd"
+                            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                    Precision
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Accordion Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Scroll reveal logic
+            const revealElements = document.querySelectorAll('.reveal-up');
+            const scrollObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+            revealElements.forEach(el => scrollObserver.observe(el));
+
+            // Accordion Logic
+            const accordionBtns = document.querySelectorAll('.accordion-btn');
+
+            accordionBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const content = this.nextElementSibling;
+                    const icon = this.querySelector('.accordion-icon');
+
+                    // Optional: Close all other accordions when one is opened
+                    document.querySelectorAll('.accordion-content').forEach(c => {
+                        if (c !== content && c.style.maxHeight) {
+                            c.style.maxHeight = null;
+                            const otherIcon = c.previousElementSibling.querySelector('.accordion-icon');
+                            if (otherIcon) otherIcon.classList.remove('rotate-180');
+                        }
+                    });
+
+                    // Toggle current
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                        icon.classList.remove('rotate-180');
+                    } else {
+                        // Use scrollHeight to get the real height of the element
+                        content.style.maxHeight = content.scrollHeight + "px";
+                        icon.classList.add('rotate-180');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

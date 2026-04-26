@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Premium Barbershop Experience | TRISASSOR</title>
+    <link rel="icon" type="image/png" href="logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -12,17 +14,23 @@
                     colors: {
                         barber: {
                             gold: '#C5A059',
-                            dark: '#0A0A0A',
+                            dark: '#09090b',
                             gray: '#1A1A1A',
-                            light: '#E5E5E5'
+                            light: '#f4f4f5'
                         }
                     },
                     fontSize: {
-                        's': '12px', // Custom size 12px untuk mobile yang lebih elegan
+                        's': '12px',
                     },
                     fontFamily: {
                         'sans': ['Montserrat', 'sans-serif'],
                         'display': ['Oswald', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        '4xl': '2rem',
+                    },
+                    spacing: {
+                        '18': '4.5rem',
                     },
                     animation: {
                         'fade-in-up': 'fadeInUp 1s ease-out forwards',
@@ -42,124 +50,290 @@
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Oswald:wght@500;700&family=Bebas+Neue&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
     <style>
-        .animate-delay-1 { animation-delay: 0.2s; }
-        .animate-delay-2 { animation-delay: 0.4s; }
-        .animate-delay-3 { animation-delay: 0.6s; }
-        
-        .video-overlay {
-            background: linear-gradient(to bottom, rgba(10,10,10,0.6) 0%, rgba(10,10,10,0.85) 70%, rgba(10,10,10,1) 100%);
-        }
-        .reveal-left { 
-            opacity: 0; 
-            transform: translateX(-50px); 
-            transition: all 1s cubic-bezier(0.5, 0, 0, 1); 
-        }
-        .reveal-right { 
-            opacity: 0; 
-            transform: translateX(50px); 
-            transition: all 1s cubic-bezier(0.5, 0, 0, 1); 
-        }
-        .reveal-up { 
-            opacity: 0; 
-            transform: translateY(50px); 
-            transition: all 1s cubic-bezier(0.5, 0, 0, 1); 
-        }
-        
-        .reveal-left.active, 
-        .reveal-right.active, 
-        .reveal-up.active { 
-            opacity: 1; 
-            transform: translate(0); 
+        .animate-delay-1 {
+            animation-delay: 0.2s;
         }
 
-        /* Set delay komplit untuk staggered animation */
-        .delay-150 { transition-delay: 0.15s; }
-        .delay-200 { transition-delay: 0.2s; }
-        .delay-300 { transition-delay: 0.3s; }
-        .delay-400 { transition-delay: 0.4s; }
-        .delay-450 { transition-delay: 0.45s; }
-        .delay-600 { transition-delay: 0.6s; }
+        .animate-delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .animate-delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        .video-overlay {
+            background: linear-gradient(to bottom, rgba(10, 10, 10, 0.6) 0%, rgba(10, 10, 10, 0.85) 70%, rgba(10, 10, 10, 1) 100%);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal-left.active,
+        .reveal-right.active,
+        .reveal-up.active {
+            opacity: 1;
+            transform: translate(0);
+        }
+
+        .delay-150 {
+            transition-delay: 0.15s;
+        }
+
+        .delay-200 {
+            transition-delay: 0.2s;
+        }
+
+        .delay-300 {
+            transition-delay: 0.3s;
+        }
+
+        .delay-400 {
+            transition-delay: 0.4s;
+        }
+
+        .delay-450 {
+            transition-delay: 0.45s;
+        }
+
+        .delay-600 {
+            transition-delay: 0.6s;
+        }
+
+        /* Operating Hours Clean & Dynamic Styles */
+        .hours-row {
+            position: relative;
+            border-left: 2px solid transparent;
+            padding-left: 0.75rem;
+            margin-left: -0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .hours-row:hover {
+            border-left-color: rgba(197, 160, 89, 0.4);
+            background: linear-gradient(to right, rgba(197, 160, 89, 0.03), transparent);
+        }
+
+        .hours-row:hover .day-label {
+            color: white;
+        }
+
+        .hours-row.active-day {
+            background: linear-gradient(to right, rgba(197, 160, 89, 0.08), transparent);
+            border-left-color: #C5A059;
+        }
+
+        .hours-row.active-day .day-label {
+            color: #C5A059;
+        }
     </style>
 </head>
+
 <body class="bg-barber-dark text-barber-light font-sans antialiased overflow-x-hidden">
 
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-4 px-4 md:px-12">
-        <div class="max-w-7xl mx-auto flex justify-between items-center w-full">
-            <a href="#" class="flex items-center gap-2 group z-50">
-                <svg class="w-6 h-6 md:w-8 md:h-8 text-barber-gold group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 7l3-1m0 0l3 1m-3-1v14m5-14l3 1m0 0l3-1m-3 1v14"></path></svg>
-                <span class="font-display text-xl md:text-2xl font-bold tracking-widest text-white mt-1 uppercase">trisassor</span>
+    <!-- Navbar Wrapper -->
+    <div class="relative z-50">
+
+        <!-- Navbar Utama -->
+        <nav id="navbar" class="fixed left-0 right-0 mx-auto z-50 flex justify-between items-center transition-all
+             duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] top-0 w-full max-w-full bg-white/0 backdrop-blur-none shadow-none
+              rounded-none">
+
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-2 group z-50">
+                <img src="./logo.png" alt="Trisassor Logo"
+                    class="h-8 md:h-10 w-auto object-contain group-hover:scale-105 transition-transform duration-300 ml-2">
+                <span
+                    class="font-display text-base lg:text-lg font-bold tracking-widest text-white uppercase">trisassor</span>
             </a>
-            <div class="hidden md:flex items-center gap-8 text-s md:text-sm uppercase tracking-widest font-semibold text-gray-300">
-                <a href="#about" class="hover:text-barber-gold transition-colors duration-300">Tentang</a>
-                <a href="#services" class="hover:text-barber-gold transition-colors duration-300">Layanan</a>
-                <a href="#gallery" class="hover:text-barber-gold transition-colors duration-300">Galeri</a>
+
+            <!-- Menu Desktop -->
+            <div
+                class="hidden lg:flex items-center gap-6 xl:gap-8 text-xs uppercase tracking-widest font-semibold text-gray-300">
+                <a href="index.html" class="text-barber-gold transition-colors duration-300">Beranda</a>
+                <a href="experience.html" class="hover:text-barber-gold transition-colors duration-300">Experience</a>
+                <a href="barbers.html" class="hover:text-barber-gold transition-colors duration-300">Kapster</a>
+                <a href="journal.html" class="hover:text-barber-gold transition-colors duration-300">Journal</a>
+                <a href="faq.html" class="hover:text-barber-gold transition-colors duration-300">FAQ</a>
             </div>
-            <div class="flex items-center gap-4">
-                <a href="#" class="hidden md:block bg-barber-gold hover:bg-white text-barber-dark font-bold text-s uppercase tracking-widest py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+
+            <!-- Bagian Kanan (Tombol & User) -->
+            <div class="hidden lg:flex items-center gap-4">
+                <a href="#"
+                    class="text-xs uppercase tracking-widest text-zinc-400 hover:text-white transition-colors font-semibold pr-4 border-r border-zinc-700">
+                    Masuk
+                </a>
+                <a href="#"
+                    class="bg-barber-gold hover:bg-white text-barber-dark font-bold text-xs uppercase tracking-widest py-2.5 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-barber-gold/20 mr-2">
                     Reservasi
                 </a>
-                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none z-50 relative w-8 h-8">
-                    <svg id="icon-open" class="w-7 h-7 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                    <svg id="icon-close" class="w-7 h-7 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 rotate-90 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
             </div>
-        </div>
-        <div id="mobile-menu" class="fixed inset-0 bg-barber-dark/98 backdrop-blur-lg z-40 flex flex-col items-center justify-center opacity-0 pointer-events-none transition-opacity duration-500 md:hidden px-6 overflow-hidden">
-        
-        <ul class="flex flex-col items-center gap-6 w-full text-lg uppercase tracking-wider font-display text-white text-center">
-            <li class="mobile-link translate-y-8 opacity-0 transition-all duration-500 delay-100 w-full">
-                <a href="#about" class="hover:text-barber-gold transition-colors block py-2">Tentang</a>
-            </li>
-            <li class="mobile-link translate-y-8 opacity-0 transition-all duration-500 delay-200 w-full">
-                <a href="#services" class="hover:text-barber-gold transition-colors block py-2">Layanan</a>
-            </li>
-            <li class="mobile-link translate-y-8 opacity-0 transition-all duration-500 delay-300 w-full">
-                <a href="#gallery" class="hover:text-barber-gold transition-colors block py-2">Galeri</a>
-            </li>
-            <li class="mobile-link translate-y-8 opacity-0 transition-all duration-500 delay-400 w-full">
-                <a href="#location" class="hover:text-barber-gold transition-colors block py-2">Lokasi</a>
-            </li>
-        </ul>
 
-        <div class="mobile-link translate-y-8 opacity-0 transition-all duration-500 delay-500 mt-10 w-full flex justify-center">
-            <a href="#" class="bg-barber-gold hover:bg-white text-barber-dark font-bold text-[12px] uppercase tracking-wider py-3 px-8 rounded-full transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(197,160,89,0.3)] w-full max-w-[250px] text-center">
-                Reservasi Sekarang
-            </a>
+            <!-- Tombol Hamburger Mobile -->
+            <button id="mobile-menu-btn" class="lg:hidden text-white focus:outline-none z-50 relative w-8 h-8">
+                <!-- Icon Garis 3 -->
+                <svg id="icon-open" class="w-7 h-7 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <!-- Icon Silang (Close) -->
+                <svg id="icon-close" class="hidden w-7 h-7 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu (Full Screen Overlay) -->
+        <div id="mobile-menu"
+            class="hidden fixed inset-0 z-40 bg-zinc-950/95 backdrop-blur-xl flex-col justify-center items-center opacity-0 transition-opacity duration-300">
+            <div class="flex flex-col items-center gap-8 text-center w-full px-6">
+                <a href="index.html"
+                    class="text-2xl font-display font-bold uppercase tracking-widest text-barber-gold transition-colors duration-300 mobile-link">Beranda</a>
+                <a href="experience.html"
+                    class="text-2xl font-display font-bold uppercase tracking-widest text-white hover:text-barber-gold transition-colors duration-300 mobile-link">Experience</a>
+                <a href="barbers.html"
+                    class="text-2xl font-display font-bold uppercase tracking-widest text-white hover:text-barber-gold transition-colors duration-300 mobile-link">Kapster</a>
+                <a href="journal.html"
+                    class="text-2xl font-display font-bold uppercase tracking-widest text-white hover:text-barber-gold transition-colors duration-300 mobile-link">Journal</a>
+                <a href="faq.html"
+                    class="text-2xl font-display font-bold uppercase tracking-widest text-white hover:text-barber-gold transition-colors duration-300 mobile-link">FAQ</a>
+
+                <div class="w-24 h-px bg-zinc-800 my-4"></div>
+
+                <a href="#"
+                    class="text-sm font-semibold uppercase tracking-widest text-zinc-400 hover:text-white transition-colors mobile-link">Masuk</a>
+                <a href="#"
+                    class="bg-barber-gold text-barber-dark font-bold text-sm uppercase tracking-widest py-3 px-10 rounded-full mt-4 mobile-link">Reservasi</a>
+            </div>
         </div>
     </div>
-    </nav>
 
-    <section class="relative h-screen w-full flex items-center justify-center overflow-hidden">
-        <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover z-0">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-man-getting-a-haircut-from-a-barber-high-angle-41249-large.mp4" type="video/mp4">
+    <!-- Script Pengganti Alpine.js (Vanilla Javascript) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navbar = document.getElementById('navbar');
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const iconOpen = document.getElementById('icon-open');
+            const iconClose = document.getElementById('icon-close');
+            let isMenuOpen = false;
+
+            // Logika Scroll
+            function handleScroll() {
+                if (window.scrollY > 20) {
+                    navbar.className = "fixed left-0 right-0 mx-auto z-50 flex justify-between items-center transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] top-4 w-[95%] max-w-6xl bg-white/10 backdrop-blur-lg shadow-2xl rounded-4xl py-3 px-6 md:px-2";
+                } else {
+                    navbar.className = "fixed left-0 right-0 mx-auto z-50 flex justify-between items-center transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] top-0 w-full max-w-full bg-white/0 backdrop-blur-none shadow-none rounded-none py-5 px-6 md:px-18";
+                }
+            }
+
+            // Jalankan saat pertama load & pasang listener saat discroll
+            handleScroll();
+            window.addEventListener('scroll', handleScroll);
+
+            // Logika Hamburger Menu
+            mobileMenuBtn.addEventListener('click', function () {
+                isMenuOpen = !isMenuOpen;
+
+                if (isMenuOpen) {
+                    // Buka Menu
+                    mobileMenu.classList.remove('hidden');
+                    mobileMenu.classList.add('flex');
+
+                    // Sedikit jeda agar CSS bisa mendeteksi perubahan
+                    setTimeout(() => {
+                        mobileMenu.classList.remove('opacity-0');
+                        mobileMenu.classList.add('opacity-100');
+                    }, 10);
+
+                    iconOpen.classList.add('hidden');
+                    iconClose.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden'; // Kunci scroll layar utama
+                } else {
+                    // Tutup Menu
+                    mobileMenu.classList.remove('opacity-100');
+                    mobileMenu.classList.add('opacity-0');
+
+                    // Tunggu animasi selesai
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenu.classList.remove('flex');
+                    }, 300);
+
+                    iconOpen.classList.remove('hidden');
+                    iconClose.classList.add('hidden');
+                    document.body.style.overflow = ''; // Kembalikan scroll layar utama
+                }
+            });
+
+            // Tutup menu saat link diklik
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (isMenuOpen) {
+                        mobileMenuBtn.click();
+                    }
+                });
+            });
+        });
+    </script>
+
+    <section class="relative h-dvh w-full flex items-center justify-center overflow-hidden">
+        <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover z-0 opacity-60">
+            <source src="trisassor opening.mp4" type="video/mp4">
         </video>
         <div class="absolute inset-0 video-overlay z-10"></div>
-        <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 h-full flex flex-col justify-center items-center text-center mt-10 md:mt-0">
+        <div
+            class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 h-full flex flex-col justify-center items-center text-center mt-10 md:mt-0">
             <div class="flex items-center gap-2 sm:gap-3 opacity-0 animate-fade-in-up">
                 <div class="w-8 sm:w-12 h-px bg-barber-gold"></div>
-                <span class="text-barber-gold uppercase tracking-widest font-bold text-s sm:text-sm">EST. 2017 | Premium Grooming</span>
+                <span class="text-barber-gold uppercase tracking-widest font-bold text-s sm:text-sm">EST. 2017 | Premium
+                    Grooming</span>
                 <div class="w-8 sm:w-12 h-px bg-barber-gold"></div>
             </div>
-            <h1 class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold uppercase tracking-tighter text-white mt-4 mb-4 leading-tight opacity-0 animate-fade-in-up animate-delay-1">
+            <h1
+                class="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-tighter text-white mt-4 mb-4 leading-tight opacity-0 animate-fade-in-up animate-delay-1">
                 Bukan Sekadar <br> <span class="text-barber-gold">Potong Rambut</span>
             </h1>
-            <p class="max-w-2xl text-s sm:text-sm md:text-xl text-barber-light/80 mb-8 md:mb-12 leading-relaxed opacity-0 animate-fade-in-up animate-delay-2 px-2">
-                Kembalikan kepercayaan dirimu dengan sentuhan presisi dari kapster profesional kami. Suasana klasik, hasil modern, kepuasan mutlak.
+            <p
+                class="max-w-2xl text-[11px] sm:text-sm md:text-lg text-barber-light/80 mb-8 md:mb-12 leading-relaxed opacity-0 animate-fade-in-up animate-delay-2 px-2">
+                Kembalikan kepercayaan dirimu dengan sentuhan presisi dari kapster profesional kami. Suasana klasik,
+                hasil modern, kepuasan mutlak.
             </p>
             <div class="w-full sm:w-auto opacity-0 animate-fade-in-up animate-delay-3 px-4 sm:px-0">
-                <a href="#" class="group flex items-center justify-center gap-3 bg-barber-gold hover:bg-white text-barber-dark font-bold py-3 sm:py-4 px-8 sm:px-10 rounded-full transition-all duration-300 transform hover:-translate-y-1 shadow-2xl w-full sm:w-auto">
+                <a href="#"
+                    class="group flex items-center justify-center gap-3 bg-barber-gold hover:bg-white text-barber-dark font-bold py-3 sm:py-4 px-8 sm:px-10 rounded-full transition-all duration-300 transform hover:-translate-y-1 shadow-2xl w-full sm:w-auto">
                     <span class="uppercase tracking-wider text-s sm:text-sm">Reservasi Sekarang</span>
-                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
                 </a>
             </div>
         </div>
-        <div class="absolute bottom-6 md:bottom-10 left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-barber-light/50">
+        <div
+            class="absolute bottom-6 md:bottom-10 left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-barber-light/50">
             <span class="text-[10px] md:text-xs uppercase tracking-widest">Scroll</span>
             <div class="w-5 h-8 md:w-6 md:h-10 border-2 border-barber-light/30 rounded-full flex justify-center p-1">
                 <div class="w-1 h-1.5 md:h-2 bg-barber-gold rounded-full animate-scroll-down"></div>
@@ -171,69 +345,111 @@
         <div class="max-w-7xl mx-auto px-6 md:px-12">
             <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-end mb-20">
                 <div class="w-full lg:w-3/5 reveal-up">
-                    <p class="text-barber-gold tracking-[0.2em] text-s md:text-sm font-bold mb-4 uppercase">Tradisi & Presisi</p>
-                    <h2 class="font-display text-4xl sm:text-5xl md:text-7xl font-bold text-white leading-[1.1] uppercase tracking-tighter">
+                    <p class="text-barber-gold tracking-[0.2em] text-s md:text-sm font-bold mb-4 uppercase">Tradisi &
+                        Presisi</p>
+                    <h2
+                        class="font-display text-3xl sm:text-4xl md:text-6xl font-bold text-white leading-[1.1] uppercase tracking-tighter">
                         Mendefinisikan Ulang <br> <span class="text-zinc-500">Standar Maskulin.</span>
                     </h2>
                 </div>
                 <div class="w-full lg:w-2/5 reveal-up delay-200">
-                    <p class="text-zinc-400 text-s sm:text-sm md:text-lg leading-relaxed border-l-2 border-barber-gold pl-6">
-                        Bukan sekadar rutinitas merapikan rambut. Kami membangun ruang di mana teknik klasik bertemu dengan gaya hidup modern. Setiap potongan adalah mahakarya, setiap kunjungan adalah pengalaman berkelas.
+                    <p
+                        class="text-zinc-400 text-s sm:text-sm md:text-lg leading-relaxed border-l-2 border-barber-gold pl-6">
+                        Bukan sekadar rutinitas merapikan rambut. Kami membangun ruang di mana teknik klasik bertemu
+                        dengan gaya hidup modern. Setiap potongan adalah mahakarya, setiap kunjungan adalah pengalaman
+                        berkelas.
                     </p>
                 </div>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
-                <div class="group bg-zinc-900/50 border border-zinc-800 p-6 hover:bg-zinc-900 hover:border-barber-gold hover:-translate-y-2 transition-all duration-300 cursor-pointer reveal-up delay-300">
-                    <div class="w-12 h-12 mb-6 text-zinc-500 group-hover:text-barber-gold transition-colors duration-300">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg>
+                <div
+                    class="group bg-zinc-900/50 border border-zinc-800 p-6 hover:bg-zinc-900 hover:border-barber-gold hover:-translate-y-2 transition-all duration-300 cursor-pointer reveal-up delay-300">
+                    <div
+                        class="w-12 h-12 mb-6 text-zinc-500 group-hover:text-barber-gold transition-colors duration-300">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5">
+                            </path>
+                        </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3 font-display tracking-wide group-hover:text-barber-gold transition-colors">Kapster Master</h3>
-                    <p class="text-s md:text-sm text-zinc-500 group-hover:text-zinc-400 transition-colors">Seniman rambut dengan pengalaman lebih dari satu dekade di industri grooming pria.</p>
+                    <h3
+                        class="text-xl font-bold text-white mb-3 font-display tracking-wide group-hover:text-barber-gold transition-colors">
+                        Kapster Master</h3>
+                    <p class="text-s md:text-sm text-zinc-500 group-hover:text-zinc-400 transition-colors">Seniman
+                        rambut dengan pengalaman lebih dari satu dekade di industri grooming pria.</p>
                 </div>
-                <div class="group bg-zinc-900/50 border border-zinc-800 p-6 hover:bg-zinc-900 hover:border-barber-gold hover:-translate-y-2 transition-all duration-300 cursor-pointer reveal-up delay-450">
-                    <div class="w-12 h-12 mb-6 text-zinc-500 group-hover:text-barber-gold transition-colors duration-300">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                <div
+                    class="group bg-zinc-900/50 border border-zinc-800 p-6 hover:bg-zinc-900 hover:border-barber-gold hover:-translate-y-2 transition-all duration-300 cursor-pointer reveal-up delay-450">
+                    <div
+                        class="w-12 h-12 mb-6 text-zinc-500 group-hover:text-barber-gold transition-colors duration-300">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z">
+                            </path>
+                        </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3 font-display tracking-wide group-hover:text-barber-gold transition-colors">Produk Elit</h3>
-                    <p class="text-s md:text-sm text-zinc-500 group-hover:text-zinc-400 transition-colors">Hanya mengaplikasikan pomade, tonik, dan aftershave dari brand premium internasional.</p>
+                    <h3
+                        class="text-xl font-bold text-white mb-3 font-display tracking-wide group-hover:text-barber-gold transition-colors">
+                        Produk Elit</h3>
+                    <p class="text-s md:text-sm text-zinc-500 group-hover:text-zinc-400 transition-colors">Hanya
+                        mengaplikasikan pomade, tonik, dan aftershave dari brand premium internasional.</p>
                 </div>
-                <div class="group bg-zinc-900/50 border border-zinc-800 p-6 hover:bg-zinc-900 hover:border-barber-gold hover:-translate-y-2 transition-all duration-300 cursor-pointer reveal-up delay-600">
-                    <div class="w-12 h-12 mb-6 text-zinc-500 group-hover:text-barber-gold transition-colors duration-300">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                <div
+                    class="group bg-zinc-900/50 border border-zinc-800 p-6 hover:bg-zinc-900 hover:border-barber-gold hover:-translate-y-2 transition-all duration-300 cursor-pointer reveal-up delay-600">
+                    <div
+                        class="w-12 h-12 mb-6 text-zinc-500 group-hover:text-barber-gold transition-colors duration-300">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+                        </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3 font-display tracking-wide group-hover:text-barber-gold transition-colors">Atmosfer Klasik</h3>
-                    <p class="text-s md:text-sm text-zinc-500 group-hover:text-zinc-400 transition-colors">Interior maskulin yang dirancang khusus untuk memberikan relaksasi maksimal saat dicukur.</p>
+                    <h3
+                        class="text-xl font-bold text-white mb-3 font-display tracking-wide group-hover:text-barber-gold transition-colors">
+                        Atmosfer Klasik</h3>
+                    <p class="text-s md:text-sm text-zinc-500 group-hover:text-zinc-400 transition-colors">Interior
+                        maskulin yang dirancang khusus untuk memberikan relaksasi maksimal saat dicukur.</p>
                 </div>
             </div>
-            
+
             <div id="stats-container" class="border-y border-zinc-800 py-12">
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-y-10 md:gap-y-0 text-center">
                     <div class="px-4 border-r border-zinc-800">
                         <div class="font-display text-4xl md:text-5xl font-bold text-white mb-2">
                             <span class="counter" data-target="2017">0</span>
                         </div>
-                        <p class="text-[10px] md:text-xs uppercase tracking-[0.15em] text-zinc-500 font-bold">Berdiri Sejak</p>
+                        <p class="text-[10px] md:text-xs uppercase tracking-[0.15em] text-zinc-500 font-bold">Berdiri
+                            Sejak</p>
                     </div>
                     <div class="px-4 md:border-r md:border-zinc-800">
                         <div class="relative inline-block font-display text-4xl md:text-5xl font-bold text-white mb-2">
                             <span class="counter" data-target="2300">0</span>
-                            <span class="text-barber-gold absolute -right-6 md:-right-8 top-0 text-3xl md:text-4xl">+</span>
+                            <span
+                                class="text-barber-gold absolute -right-6 md:-right-8 top-0 text-3xl md:text-4xl">+</span>
                         </div>
-                        <p class="text-[10px] md:text-xs uppercase tracking-[0.15em] text-zinc-500 font-bold">Pelanggan Puas</p>
+                        <p class="text-[10px] md:text-xs uppercase tracking-[0.15em] text-zinc-500 font-bold">Pelanggan
+                            Puas</p>
                     </div>
                     <div class="px-4 border-r border-zinc-800">
                         <div class="font-display text-4xl md:text-5xl font-bold text-white mb-2">
                             <span class="counter" data-target="15">0</span>
                         </div>
-                        <p class="text-[10px] md:text-xs uppercase tracking-[0.15em] text-zinc-500 font-bold">Kapster Profesional</p>
+                        <p class="text-[10px] md:text-xs uppercase tracking-[0.15em] text-zinc-500 font-bold">Kapster
+                            Profesional</p>
                     </div>
                     <div class="px-4">
-                        <div class="flex items-center justify-center gap-2 sm:gap-2.5 font-display text-4xl md:text-5xl font-bold text-white mb-2">
+                        <div
+                            class="flex items-center justify-center gap-2 sm:gap-2.5 font-display text-4xl md:text-5xl font-bold text-white mb-2">
                             <span>4.5</span>
-                            <svg class="w-5 h-5 lg:w-6 lg:h-6 text-barber-gold mb-1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-5 h-5 lg:w-6 lg:h-6 text-barber-gold mb-1" fill="currentColor"
+                                viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                </path>
+                            </svg>
                         </div>
-                        <p class="text-[10px] md:text-xs uppercase tracking-[0.15em] text-zinc-500 font-bold">Rating Ulasan</p>
+                        <p class="text-[10px] md:text-xs uppercase tracking-[0.15em] text-zinc-500 font-bold">Rating
+                            Ulasan</p>
                     </div>
                 </div>
             </div>
@@ -245,7 +461,8 @@
             <div class="mb-16 reveal-up">
                 <div class="flex items-center gap-3 mb-4">
                     <div class="w-10 h-px bg-barber-gold"></div>
-                    <span class="text-barber-gold uppercase tracking-widest font-bold text-s sm:text-sm">Signature Services</span>
+                    <span class="text-barber-gold uppercase tracking-widest font-bold text-s sm:text-sm">Signature
+                        Services</span>
                 </div>
                 <h2 class="font-display text-4xl md:text-6xl font-bold text-white uppercase tracking-tighter">
                     Layanan <span class="text-zinc-600">Grooming</span>
@@ -253,47 +470,119 @@
             </div>
             <div class="flex flex-col lg:flex-row gap-12 lg:gap-16 relative">
                 <div class="w-full lg:w-3/5 flex flex-col z-20">
-                    <div class="service-item group py-8 border-b border-zinc-800 cursor-pointer offscreen-right" data-image="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=2000">
+                    <div class="service-item group py-8 border-b border-zinc-800 cursor-pointer offscreen-right"
+                        data-image="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=2000">
                         <div class="flex justify-between items-end mb-2">
-                            <h3 class="font-display text-2xl md:text-3xl lg:text-4xl text-zinc-400 group-hover:text-white transition-colors duration-500 uppercase tracking-tight">Classic Haircut</h3>
-                            <span class="text-barber-gold font-bold text-lg md:text-xl lg:text-2xl group-hover:scale-110 transition-transform duration-500">Rp 85k</span>
+                            <h3
+                                class="font-display text-xl md:text-2xl lg:text-3xl text-zinc-400 group-hover:text-white transition-colors duration-500 uppercase tracking-tight">
+                                Regular Cut</h3>
+                            <span
+                                class="text-barber-gold font-bold text-base md:text-lg lg:text-xl group-hover:scale-110 transition-transform duration-500">Rp
+                                50k</span>
                         </div>
-                        <p class="text-zinc-500 text-s md:text-base group-hover:text-zinc-300 transition-colors duration-500 max-w-md">Konsultasi gaya, pencucian rambut, potongan presisi, pijat ringan, dan styling akhir dengan pomade premium.</p>
+                        <p
+                            class="text-zinc-500 text-xs md:text-sm lg:text-base group-hover:text-zinc-300 transition-colors duration-500 max-w-md">
+                            Potongan rambut gaya standar yang rapi dan elegan, sudah termasuk cuci rambut dan penataan
+                            dengan pomade untuk hasil akhir yang stylish.</p>
                     </div>
-                    <div class="service-item group py-8 border-b border-zinc-800 cursor-pointer offscreen-right delay-150 relative pl-6 border-l-4 border-l-barber-gold bg-gradient-to-r from-zinc-900/50 to-transparent hover:from-zinc-900/80 transition-all duration-500" data-image="https://images.unsplash.com/photo-1593702288056-ccbfcf3eb235?q=80&w=2070">
-                        <div class="absolute -top-3 left-6 bg-barber-gold text-barber-dark text-[10px] font-bold uppercase tracking-widest py-1 px-3 rounded-sm shadow-lg flex items-center gap-1">
-                            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    <div class="service-item group py-8 border-b border-zinc-800 cursor-pointer offscreen-right delay-150 relative pl-6 border-l-4 border-l-barber-gold bg-gradient-to-r from-zinc-900/50 to-transparent hover:from-zinc-900/80 transition-all duration-500"
+                        data-image="https://images.unsplash.com/photo-1593702288056-ccbfcf3eb235?q=80&w=2070">
+                        <div
+                            class="absolute -top-3 left-6 bg-barber-gold text-barber-dark text-[10px] font-bold uppercase tracking-widest py-1 px-3 rounded-sm shadow-lg flex items-center gap-1">
+                            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                </path>
+                            </svg>
                             Pilihan Favorit
                         </div>
                         <div class="flex justify-between items-end mb-2 mt-2">
-                            <h3 class="font-display text-2xl md:text-3xl lg:text-4xl text-white group-hover:text-barber-gold transition-colors duration-500 uppercase tracking-tight">The "Gentleman"</h3>
-                            <span class="text-barber-gold font-bold text-lg md:text-xl lg:text-2xl group-hover:scale-110 transition-transform duration-500">Rp 130k</span>
+                            <h3
+                                class="font-display text-xl md:text-2xl lg:text-3xl text-white group-hover:text-barber-gold transition-colors duration-500 uppercase tracking-tight">
+                                Premium Cut</h3>
+                            <span
+                                class="text-barber-gold font-bold text-base md:text-lg lg:text-xl group-hover:scale-110 transition-transform duration-500">Rp
+                                60k</span>
                         </div>
-                        <p class="text-zinc-400 text-s md:text-base group-hover:text-zinc-300 transition-colors duration-500 max-w-md">Paket komplit: Classic Haircut digabung dengan Hot Towel Shave untuk tampilan segar maksimal dan relaksasi total.</p>
+                        <p
+                            class="text-zinc-400 text-xs md:text-sm lg:text-base group-hover:text-zinc-300 transition-colors duration-500 max-w-md">
+                            Layanan potong rambut eksklusif yang mencakup pijatan relaksasi, handuk hangat yang
+                            menyegarkan, cuci rambut, dan styling pomade premium.</p>
                     </div>
-                    <div class="service-item group py-8 border-b border-zinc-800 cursor-pointer offscreen-right delay-300" data-image="https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=2070">
+                    <div class="service-item group py-8 border-b border-zinc-800 cursor-pointer offscreen-right delay-200"
+                        data-image="https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=2070">
                         <div class="flex justify-between items-end mb-2">
-                            <h3 class="font-display text-2xl md:text-3xl lg:text-4xl text-zinc-400 group-hover:text-white transition-colors duration-500 uppercase tracking-tight">Hot Towel Shave</h3>
-                            <span class="text-barber-gold font-bold text-lg md:text-xl lg:text-2xl group-hover:scale-110 transition-transform duration-500">Rp 60k</span>
+                            <h3
+                                class="font-display text-xl md:text-2xl lg:text-3xl text-zinc-400 group-hover:text-white transition-colors duration-500 uppercase tracking-tight">
+                                Shave</h3>
+                            <span
+                                class="text-barber-gold font-bold text-base md:text-lg lg:text-xl group-hover:scale-110 transition-transform duration-500">Rp
+                                25k</span>
                         </div>
-                        <p class="text-zinc-500 text-s md:text-base group-hover:text-zinc-300 transition-colors duration-500 max-w-md">Cukur kumis dan jenggot ala pria sejati dengan handuk hangat, krim cukur mewah, dan aftershave menenangkan.</p>
+                        <p
+                            class="text-zinc-500 text-xs md:text-sm lg:text-base group-hover:text-zinc-300 transition-colors duration-500 max-w-md">
+                            Cukur jenggot dan kumis hingga bersih sempurna dengan presisi tinggi untuk penampilan yang
+                            lebih rapi dan tajam.</p>
                     </div>
-                    <div class="service-item group py-8 border-b border-zinc-800 cursor-pointer offscreen-right delay-450" data-image="https://images.unsplash.com/photo-1521490212873-1961e6afb063?q=80&w=2070">
+                    <div class="service-item group py-8 border-b border-zinc-800 cursor-pointer offscreen-right delay-300"
+                        data-image="https://images.unsplash.com/photo-1593702288056-ccbfcf3eb235?q=80&w=2070">
                         <div class="flex justify-between items-end mb-2">
-                            <h3 class="font-display text-2xl md:text-3xl lg:text-4xl text-zinc-400 group-hover:text-white transition-colors duration-500 uppercase tracking-tight">Hair Coloring</h3>
-                            <span class="text-barber-gold font-bold text-lg md:text-xl lg:text-2xl group-hover:scale-110 transition-transform duration-500">Mulai Rp 150k</span>
+                            <h3
+                                class="font-display text-xl md:text-2xl lg:text-3xl text-zinc-400 group-hover:text-white transition-colors duration-500 uppercase tracking-tight">
+                                Shave + Massage</h3>
+                            <span
+                                class="text-barber-gold font-bold text-base md:text-lg lg:text-xl group-hover:scale-110 transition-transform duration-500">Rp
+                                35k</span>
                         </div>
-                        <p class="text-zinc-500 text-s md:text-base group-hover:text-zinc-300 transition-colors duration-500 max-w-md">Pewarnaan rambut profesional. Dari penutupan uban natural hingga warna-warna fashion yang berani.</p>
+                        <p
+                            class="text-zinc-500 text-xs md:text-sm lg:text-base group-hover:text-zinc-300 transition-colors duration-500 max-w-md">
+                            Kombinasi cukur bersih dan pijatan wajah yang menenangkan, lengkap dengan penggunaan handuk
+                            hangat untuk relaksasi maksimal.</p>
+                    </div>
+                    <div class="service-item group py-8 border-b border-zinc-800 cursor-pointer offscreen-right delay-400"
+                        data-image="https://images.unsplash.com/photo-1521490212873-1961e6afb063?q=80&w=2070">
+                        <div class="flex justify-between items-end mb-2">
+                            <h3
+                                class="font-display text-xl md:text-2xl lg:text-3xl text-zinc-400 group-hover:text-white transition-colors duration-500 uppercase tracking-tight">
+                                Smooting, Perming</h3>
+                            <span
+                                class="text-barber-gold font-bold text-base md:text-lg lg:text-xl group-hover:scale-110 transition-transform duration-500">Rp
+                                250k</span>
+                        </div>
+                        <p
+                            class="text-zinc-500 text-xs md:text-sm lg:text-base group-hover:text-zinc-300 transition-colors duration-500 max-w-md">
+                            Layanan pelurusan atau pengeritingan rambut profesional. Termasuk pijat relaksasi dan handuk
+                            hangat. (Harga menyesuaikan panjang rambut).</p>
+                    </div>
+                    <div class="service-item group py-8 border-b border-zinc-800 cursor-pointer offscreen-right delay-500"
+                        data-image="https://images.unsplash.com/photo-1521490212873-1961e6afb063?q=80&w=2070">
+                        <div class="flex justify-between items-end mb-2">
+                            <h3
+                                class="font-display text-xl md:text-2xl lg:text-3xl text-zinc-400 group-hover:text-white transition-colors duration-500 uppercase tracking-tight">
+                                Hair Coloring</h3>
+                            <span
+                                class="text-barber-gold font-bold text-base md:text-lg lg:text-xl group-hover:scale-110 transition-transform duration-500">Rp
+                                60-250k</span>
+                        </div>
+                        <p
+                            class="text-zinc-500 text-xs md:text-sm lg:text-base group-hover:text-zinc-300 transition-colors duration-500 max-w-md">
+                            Ubah penampilanmu dengan warna rambut baru. Tersedia dari warna hitam natural hingga proses
+                            bleaching untuk hasil yang lebih vibrant.</p>
                     </div>
                 </div>
                 <div class="hidden lg:block w-2/5 relative z-10">
                     <div class="sticky top-32 flex items-start gap-4 h-[500px] offscreen-right delay-450">
-                        <div class="flex-1 h-full rounded-lg overflow-hidden shadow-2xl border border-zinc-800 relative z-10">
-                            <img id="service-preview-img" src="https://images.unsplash.com/photo-1593702288056-ccbfcf3eb235?q=80&w=2070" alt="Service Preview" class="w-full h-full object-cover transition-all duration-700 ease-in-out">
+                        <div
+                            class="flex-1 h-full rounded-lg overflow-hidden shadow-2xl border border-zinc-800 relative z-10">
+                            <img id="service-preview-img"
+                                src="https://images.unsplash.com/photo-1593702288056-ccbfcf3eb235?q=80&w=2070"
+                                alt="Service Preview"
+                                class="w-full h-full object-cover transition-all duration-700 ease-in-out">
                             <div class="absolute inset-0 bg-barber-dark/10"></div>
                         </div>
-                        <div class="pt-2"> 
-                            <span class="inline-block [writing-mode:vertical-rl] text-[10px] md:text-xs uppercase tracking-[0.4em] text-zinc-600 font-bold">
+                        <div class="pt-2">
+                            <span
+                                class="inline-block [writing-mode:vertical-rl] text-[10px] md:text-xs uppercase tracking-[0.4em] text-zinc-600 font-bold">
                                 Trisassor Exclusive Services
                             </span>
                         </div>
@@ -309,69 +598,113 @@
                 <div class="reveal-up">
                     <div class="flex items-center gap-3 mb-4">
                         <div class="w-10 h-px bg-barber-gold"></div>
-                        <span class="text-barber-gold uppercase tracking-widest font-bold text-s sm:text-sm">The Lookbook</span>
+                        <span class="text-barber-gold uppercase tracking-widest font-bold text-s sm:text-sm">The
+                            Lookbook</span>
                     </div>
                     <h2 class="font-display text-4xl md:text-6xl font-bold text-white uppercase tracking-tighter">
                         Galeri <span class="text-zinc-600">Pelanggan</span>
                     </h2>
                 </div>
                 <div class="reveal-up delay-200">
-                    <a href="https://www.instagram.com/trisassorbarberhouse/" class="group inline-flex items-center gap-2 text-zinc-400 hover:text-barber-gold transition-colors font-bold uppercase tracking-wider text-s sm:text-sm pb-1 border-b border-zinc-800 hover:border-barber-gold">
+                    <a href="https://www.instagram.com/trisassorbarberhouse/"
+                        class="group inline-flex items-center gap-2 text-zinc-400 hover:text-barber-gold transition-colors font-bold uppercase tracking-wider text-s sm:text-sm pb-1 border-b border-zinc-800 hover:border-barber-gold">
                         Lihat lebih banyak di Instagram
-                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
                     </a>
                 </div>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 auto-rows-[200px] md:auto-rows-[280px] gap-4 md:gap-6" id="gallery-grid">
+            <div class="grid grid-cols-2 md:grid-cols-4 auto-rows-[200px] md:auto-rows-[280px] gap-4 md:gap-6"
+                id="gallery-grid">
                 <div class="col-span-2 row-span-2 group relative overflow-hidden rounded-xl bg-zinc-900 reveal-up">
-                    <img src="https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?q=80&w=2000" alt="Classic Pompadour" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-barber-dark via-barber-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
-                        <h3 class="font-display text-2xl text-white uppercase tracking-wider translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Classic Pompadour</h3>
-                        <p class="text-barber-gold text-s font-bold tracking-widest translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">BY CAPTAIN. MIKE</p>
+                    <img src="https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?q=80&w=2000"
+                        alt="Classic Pompadour"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-barber-dark via-barber-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+                        <h3
+                            class="font-display text-2xl text-white uppercase tracking-wider translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                            Classic Pompadour</h3>
+                        <p
+                            class="text-barber-gold text-s font-bold tracking-widest translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
+                            BY CAPTAIN. MIKE</p>
                     </div>
                 </div>
-                <div class="col-span-1 row-span-1 group relative overflow-hidden rounded-xl bg-zinc-900 reveal-up delay-150">
-                    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=1000" alt="Textured Crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-barber-dark/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center p-4 text-center">
+                <div
+                    class="col-span-1 row-span-1 group relative overflow-hidden rounded-xl bg-zinc-900 reveal-up delay-150">
+                    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=1000"
+                        alt="Textured Crop"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-barber-dark/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center p-4 text-center">
                         <h3 class="font-display text-lg text-white uppercase tracking-wider">Textured Crop</h3>
                     </div>
                 </div>
-                <div class="col-span-1 row-span-2 group relative overflow-hidden rounded-xl bg-zinc-900 reveal-up delay-300">
-                    <img src="https://images.unsplash.com/photo-1512496015851-a1dc8f411831?q=80&w=1000" alt="Skin Fade" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-barber-dark via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
-                        <h3 class="font-display text-xl text-white uppercase tracking-wider translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Skin Fade & Beard</h3>
+                <div
+                    class="col-span-1 row-span-2 group relative overflow-hidden rounded-xl bg-zinc-900 reveal-up delay-300">
+                    <img src="https://images.unsplash.com/photo-1512496015851-a1dc8f411831?q=80&w=1000" alt="Skin Fade"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-barber-dark via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+                        <h3
+                            class="font-display text-xl text-white uppercase tracking-wider translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                            Skin Fade & Beard</h3>
                     </div>
                 </div>
-                <div class="col-span-1 row-span-1 group relative overflow-hidden rounded-xl bg-zinc-900 reveal-up delay-450">
-                    <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?q=80&w=1000" alt="Slick Back" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-barber-dark/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center p-4 text-center">
+                <div
+                    class="col-span-1 row-span-1 group relative overflow-hidden rounded-xl bg-zinc-900 reveal-up delay-450">
+                    <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?q=80&w=1000" alt="Slick Back"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-barber-dark/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center p-4 text-center">
                         <h3 class="font-display text-lg text-white uppercase tracking-wider">Slick Back</h3>
                     </div>
                 </div>
                 <div class="col-span-2 row-span-1 group relative overflow-hidden rounded-xl bg-zinc-900 reveal-up">
-                    <img src="https://images.unsplash.com/photo-1532710093739-9470ac1d4e0b?q=80&w=2000" alt="Buzz Cut" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 object-top">
-                    <div class="absolute inset-0 bg-gradient-to-t from-barber-dark to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
-                        <h3 class="font-display text-2xl text-white uppercase tracking-wider translate-y-4 group-hover:translate-y-0 transition-transform duration-500">Modern Buzz Cut</h3>
+                    <img src="https://images.unsplash.com/photo-1532710093739-9470ac1d4e0b?q=80&w=2000" alt="Buzz Cut"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 object-top">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-barber-dark to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+                        <h3
+                            class="font-display text-2xl text-white uppercase tracking-wider translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                            Modern Buzz Cut</h3>
                     </div>
                 </div>
-                <div id="btn-load-more" class="col-span-1 md:col-span-2 row-span-1 group relative overflow-hidden rounded-xl flex items-center justify-center bg-zinc-900/50 border border-zinc-800 hover:border-barber-gold transition-all duration-500 cursor-pointer reveal-up delay-150">
+                <div id="btn-load-more"
+                    class="col-span-1 md:col-span-2 row-span-1 group relative overflow-hidden rounded-xl flex items-center justify-center bg-zinc-900/50 border border-zinc-800 hover:border-barber-gold transition-all duration-500 cursor-pointer reveal-up delay-150">
                     <div class="text-center p-6">
-                        <div class="w-12 h-12 rounded-full bg-barber-gold text-barber-dark flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-90 transition-transform duration-500">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                        <div
+                            class="w-12 h-12 rounded-full bg-barber-gold text-barber-dark flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-90 transition-transform duration-500">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 4v16m8-8H4"></path>
+                            </svg>
                         </div>
-                        <h3 class="font-display text-lg md:text-xl text-white uppercase tracking-wider mb-1.5">Lihat Semua Karya</h3>
+                        <h3 class="font-display text-lg md:text-xl text-white uppercase tracking-wider mb-1.5">Lihat
+                            Semua Karya</h3>
                         <p class="text-s text-zinc-500 tracking-widest uppercase">Eksplorasi Gaya</p>
                     </div>
                 </div>
-                <div class="hidden-gallery-item hidden col-span-1 row-span-1 group relative overflow-hidden rounded-xl bg-zinc-900">
-                    <img src="https://images.unsplash.com/photo-1582293628318-9fc31aeb7cce?q=80&w=1000" alt="Mullet Fade" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-barber-dark/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center p-4 text-center">
+                <div
+                    class="hidden-gallery-item hidden col-span-1 row-span-1 group relative overflow-hidden rounded-xl bg-zinc-900">
+                    <img src="https://images.unsplash.com/photo-1582293628318-9fc31aeb7cce?q=80&w=1000"
+                        alt="Mullet Fade"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-barber-dark/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center p-4 text-center">
                         <h3 class="font-display text-lg text-white uppercase tracking-wider">Mullet Fade</h3>
                     </div>
                 </div>
-                <div class="hidden-gallery-item hidden col-span-1 row-span-1 group relative overflow-hidden rounded-xl bg-zinc-900">
-                    <img src="https://images.unsplash.com/photo-1635300589578-8fb93b708b1a?q=80&w=1000" alt="French Crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-barber-dark/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center p-4 text-center">
+                <div
+                    class="hidden-gallery-item hidden col-span-1 row-span-1 group relative overflow-hidden rounded-xl bg-zinc-900">
+                    <img src="https://images.unsplash.com/photo-1635300589578-8fb93b708b1a?q=80&w=1000"
+                        alt="French Crop"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-barber-dark/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center p-4 text-center">
                         <h3 class="font-display text-lg text-white uppercase tracking-wider">French Crop</h3>
                     </div>
                 </div>
@@ -380,12 +713,15 @@
     </section>
 
     <section id="location" class="py-24 bg-zinc-950 relative z-10">
-        <div class="absolute top-1/2 left-0 w-1/3 h-1/2 bg-barber-gold/5 blur-[120px] -translate-y-1/2 pointer-events-none"></div>
+        <div
+            class="absolute top-1/2 left-0 w-1/3 h-1/2 bg-barber-gold/5 blur-[120px] -translate-y-1/2 pointer-events-none">
+        </div>
         <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
             <div class="mb-16 reveal-up">
                 <div class="flex items-center gap-3 mb-4">
                     <div class="w-10 h-px bg-barber-gold"></div>
-                    <span class="text-barber-gold uppercase tracking-widest font-bold text-s sm:text-sm">Headquarters</span>
+                    <span
+                        class="text-barber-gold uppercase tracking-widest font-bold text-s sm:text-sm">Headquarters</span>
                 </div>
                 <h2 class="font-display text-4xl md:text-6xl font-bold text-white uppercase tracking-tighter">
                     Satu Titik, <span class="text-zinc-600">Pengalaman Maksimal.</span>
@@ -393,57 +729,115 @@
             </div>
             <div class="flex flex-col lg:flex-row gap-12 items-start relative">
                 <div class="w-full lg:w-1/2 flex flex-col gap-10 reveal-up delay-150 lg:sticky lg:top-32 z-20">
-                    <div class="relative pl-8 border-l border-zinc-800 group hover:border-barber-gold transition-colors duration-500">
-                        <div class="absolute top-0 -left-[17px] w-8 h-8 bg-zinc-950 border border-zinc-800 group-hover:border-barber-gold rounded-full flex items-center justify-center transition-colors duration-500">
-                            <svg class="w-4 h-4 text-barber-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    <div
+                        class="relative pl-8 border-l border-zinc-800 group hover:border-barber-gold transition-colors duration-500">
+                        <div
+                            class="absolute top-0 -left-[17px] w-8 h-8 bg-zinc-950 border border-zinc-800 group-hover:border-barber-gold rounded-full flex items-center justify-center transition-colors duration-500">
+                            <svg class="w-4 h-4 text-barber-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                </path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
                         </div>
                         <h3 class="text-white font-bold uppercase tracking-widest text-sm mb-3">Lokasi Barbershop</h3>
                         <p class="text-zinc-400 text-s md:text-base leading-relaxed max-w-sm">
-                            Jl. Sudirman No. 45, Kompleks Ruko Premium Blok A1, Jakarta Selatan, 12190.
+                            Jl. Ciater Raya No.99B, Ciater, Kec. Serpong, Kota Tangerang Selatan, Banten 15310,
+                            Indonesia
                         </p>
                     </div>
-                    <div class="relative pl-8 border-l border-zinc-800 group hover:border-barber-gold transition-colors duration-500">
-                        <div class="absolute top-0 -left-[17px] w-8 h-8 bg-zinc-950 border border-zinc-800 group-hover:border-barber-gold rounded-full flex items-center justify-center transition-colors duration-500">
-                            <svg class="w-4 h-4 text-barber-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <div
+                        class="relative pl-8 border-l border-zinc-800 group hover:border-barber-gold transition-colors duration-500">
+                        <div
+                            class="absolute top-0 -left-[17px] w-8 h-8 bg-zinc-950 border border-zinc-800 group-hover:border-barber-gold rounded-full flex items-center justify-center transition-colors duration-500">
+                            <svg class="w-4 h-4 text-barber-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
                         </div>
-                        <div class="flex items-center gap-4 mb-3">
+                        <div class="flex items-center gap-4 mb-6">
                             <h3 class="text-white font-bold uppercase tracking-widest text-sm">Jam Operasional</h3>
-                            <div class="flex items-center gap-2 bg-green-500/10 border border-green-500/20 py-1 px-3 rounded-full">
+                            <div id="shop-status-badge"
+                                class="flex items-center gap-2 py-1 px-3 rounded-full transition-all duration-500">
                                 <span class="relative flex h-2 w-2">
-                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                                    <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                                    <span id="badge-ping"
+                                        class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"></span>
+                                    <span id="badge-dot" class="relative inline-flex rounded-full h-2 w-2"></span>
                                 </span>
-                                <span class="text-[10px] uppercase tracking-wider text-green-400 font-bold">Buka Sekarang</span>
+                                <span id="shop-status-text"
+                                    class="text-[10px] uppercase tracking-wider font-bold">Checking...</span>
                             </div>
                         </div>
-                        <ul class="text-zinc-400 text-s md:text-base space-y-2 max-w-sm">
-                            <li class="flex justify-between border-b border-zinc-800/50 pb-1"><span>Senin - Jumat</span> <span class="text-white font-bold">10:00 - 21:00</span></li>
-                            <li class="flex justify-between border-b border-zinc-800/50 pb-1"><span>Sabtu - Minggu</span> <span class="text-white font-bold">09:00 - 22:00</span></li>
-                            <li class="flex justify-between pb-1 text-zinc-600"><span>Hari Libur Nasional</span> <span>Tutup</span></li>
+                        <ul class="text-zinc-400 text-s md:text-base space-y-4 max-w-sm">
+                            <li id="row-mon-thu"
+                                class="hours-row group flex justify-between items-center border-b border-zinc-800/50 py-3 cursor-default">
+                                <span
+                                    class="day-label uppercase tracking-wider font-semibold text-zinc-400 transition-colors duration-300 group-hover:text-barber-gold">Senin
+                                    - Kamis</span>
+                                <span class="text-white font-bold text-lg">09.00 - 23.00</span>
+                            </li>
+                            <li id="row-fri"
+                                class="hours-row group flex justify-between items-center border-b border-zinc-800/50 py-3 cursor-default">
+                                <span
+                                    class="day-label uppercase tracking-wider font-semibold text-zinc-400 transition-colors duration-300 group-hover:text-barber-gold">Jum'at</span>
+                                <span class="text-white font-bold text-lg">13.00 - 22.00</span>
+                            </li>
+                            <li id="row-sat-sun"
+                                class="hours-row group flex justify-between items-center py-3 cursor-default">
+                                <span
+                                    class="day-label uppercase tracking-wider font-semibold text-zinc-400 transition-colors duration-300 group-hover:text-barber-gold">Sabtu
+                                    - Minggu</span>
+                                <span class="text-white font-bold text-lg">09.00 - 21.00</span>
+                            </li>
                         </ul>
                     </div>
                     <div class="flex justify-center sm:justify-start gap-4 pt-4 sm:ml-4">
-                        <a href="#" class="bg-white text-zinc-950 hover:bg-barber-gold font-bold py-3 px-6 rounded-full transition-colors duration-300 flex items-center gap-2 text-s sm:text-sm uppercase tracking-wider shadow-lg">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+                        <a href="#"
+                            class="bg-white text-zinc-950 hover:bg-barber-gold font-bold py-3 px-6 rounded-full transition-colors duration-300 flex items-center gap-2 text-s sm:text-sm uppercase tracking-wider shadow-lg">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z">
+                                </path>
+                            </svg>
                             Hubungi via WhatsApp
                         </a>
                     </div>
                 </div>
                 <div class="w-full lg:w-1/2 reveal-up delay-300 relative z-10">
-                    <div id="interactive-map-container" class="relative w-full h-[500px] lg:h-[750px] rounded-2xl overflow-hidden shadow-2xl group border border-zinc-800 bg-zinc-900">
-                        <img id="map-cover-img" src="https://images.unsplash.com/photo-1599351431613-18ef1fdf27e1?q=80&w=2000" alt="Barber Maps" class="absolute inset-0 w-full h-full object-cover transition-all duration-1000 z-20">
-                        <div id="map-overlay" class="absolute inset-0 bg-zinc-950/70 flex flex-col items-center justify-center transition-all duration-1000 z-30">
-                            <div class="text-center mb-6 transform transition-transform duration-500 group-hover:-translate-y-2">
-                                <h3 class="text-white font-display text-2xl uppercase tracking-widest mb-2">Lihat Rute</h3>
+                    <div id="interactive-map-container"
+                        class="relative w-full h-[500px] lg:h-[750px] rounded-2xl overflow-hidden shadow-2xl group border border-zinc-800 bg-zinc-900">
+                        <img id="map-cover-img"
+                            src="https://images.unsplash.com/photo-1599351431613-18ef1fdf27e1?q=80&w=2000"
+                            alt="Barber Maps"
+                            class="absolute inset-0 w-full h-full object-cover transition-all duration-1000 z-20">
+                        <div id="map-overlay"
+                            class="absolute inset-0 bg-zinc-950/70 flex flex-col items-center justify-center transition-all duration-1000 z-30">
+                            <div
+                                class="text-center mb-6 transform transition-transform duration-500 group-hover:-translate-y-2">
+                                <h3 class="text-white font-display text-2xl uppercase tracking-widest mb-2">Lihat Rute
+                                </h3>
                                 <p class="text-zinc-400 text-s sm:text-sm">Buka peta interaktif untuk petunjuk arah.</p>
                             </div>
-                            <button id="btn-reveal-map" class="bg-barber-gold hover:bg-white text-zinc-950 font-bold py-4 px-8 rounded-full flex items-center gap-3 transform transition-all duration-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(197,160,89,0.4)]">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            <button id="btn-reveal-map"
+                                class="bg-barber-gold hover:bg-white text-zinc-950 font-bold py-4 px-8 rounded-full flex items-center gap-3 transform transition-all duration-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(197,160,89,0.4)]">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                    </path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
                                 <span class="uppercase tracking-widest text-s sm:text-sm">Buka Peta</span>
                             </button>
                         </div>
-                        <div id="map-iframe-wrapper" class="absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-1000 z-10">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15862.446769070886!2d106.6806149871582!3d-6.314631899999986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e547f559d05b%3A0x21bd48da108dddb5!2sTrisassor%20Barber%20and%20shop!5e0!3m2!1sid!2sid!4v1774317798603!5m2!1sid!2sid" allowfullscreen="" loading="lazy" class="w-full h-full border-0 grayscale hover:grayscale-0 transition-all duration-700" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <div id="map-iframe-wrapper"
+                            class="absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-1000 z-10">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15862.446769070886!2d106.6806149871582!3d-6.314631899999986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e547f559d05b%3A0x21bd48da108dddb5!2sTrisassor%20Barber%20and%20shop!5e0!3m2!1sid!2sid!4v1774317798603!5m2!1sid!2sid"
+                                allowfullscreen="" loading="lazy"
+                                class="w-full h-full border-0 grayscale hover:grayscale-0 transition-all duration-700"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
                 </div>
@@ -451,51 +845,56 @@
         </div>
     </section>
 
-    <footer class="bg-black pt-20 pb-10 relative overflow-hidden border-t border-zinc-900 z-10">
-        <div class="absolute bottom-[25%] sm:bottom-[0%] left-0 w-full overflow-hidden flex justify-center pointer-events-none z-0 opacity-[0.06] select-none">
-            <span class="font-display text-[7.2vw] md:text-[7.2vw] font-bold text-white whitespace-nowrap leading-none uppercase tracking-widest">
+    <footer class="bg-black pt-16 pb-8 relative overflow-hidden border-t border-zinc-900 z-10">
+        <div
+            class="absolute bottom-[25%] sm:bottom-[0%] left-0 w-full overflow-hidden flex justify-center pointer-events-none z-0 opacity-[0.15] sm:opacity-[0.07] select-none">
+            <span
+                class="font-display text-[7.2vw] md:text-[7.2vw] font-bold text-white whitespace-nowrap leading-none uppercase tracking-widest">
                 TRISASSOR BARBER HOUSE
             </span>
         </div>
         <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
             <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-20 reveal-up">
                 <div class="md:w-1/2">
-                    <a href="#" class="inline-flex items-center gap-2 mb-6 group">
-                        <svg class="w-8 h-8 text-barber-gold group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 7l3-1m0 0l3 1m-3-1v14m5-14l3 1m0 0l3-1m-3 1v14"></path></svg>
-                        <span class="font-display text-3xl font-bold tracking-widest text-white mt-1">TRISASSOR</span>
+                    <a href="#" class="inline-flex items-center gap-3 mb-6 group">
+                        <img src="logo.png" alt="TRISASSOR Logo"
+                            class="h-10 md:h-12 w-auto object-contain group-hover:scale-110 transition-transform duration-300">
                     </a>
                     <p class="text-zinc-500 max-w-sm text-s md:text-base leading-relaxed">
-                        Mendefinisikan ulang standar maskulin. Kami tidak sekadar memotong rambut, kami memahat karakter untuk para pria modern.
+                        Mendefinisikan ulang standar maskulin. Kami tidak sekadar memotong rambut, kami memahat karakter
+                        untuk para pria modern.
                     </p>
                 </div>
-                
-                <div class="grid grid-cols-2 gap-8 md:gap-24 w-full md:w-auto mt-8 md:mt-0">
-                    <div>
-                        <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Jelajahi</h4>
-                        <ul class="space-y-4 text-zinc-500 text-s md:text-base font-semibold tracking-wider uppercase">
-                            <li><a href="#about" class="hover:text-barber-gold transition-colors duration-300">Tentang</a></li>
-                            <li><a href="#services" class="hover:text-barber-gold transition-colors duration-300">Layanan</a></li>
-                            <li><a href="#gallery" class="hover:text-barber-gold transition-colors duration-300">Galeri</a></li>
-                            <li><a href="#location" class="hover:text-barber-gold transition-colors duration-300">Lokasi</a></li>
-                        </ul>
-                    </div>
+
+                <div class="w-full md:w-auto mt-8 md:mt-0">
                     <div>
                         <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-6">Sosial</h4>
                         <ul class="space-y-4 text-zinc-500 text-s md:text-base font-semibold tracking-wider uppercase">
-                            <li><a href="https://www.instagram.com/trisassorbarberhouse/" class="hover:text-barber-gold transition-colors duration-300">Instagram</a></li>
-                            <li><a href="https://www.tiktok.com/@trisassor.barberhouse" class="hover:text-barber-gold transition-colors duration-300">TikTok</a></li>
+                            <li><a href="https://www.instagram.com/trisassorbarberhouse/" target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="hover:text-barber-gold transition-colors duration-300">Instagram</a></li>
+                            <li><a href="https://www.tiktok.com/@trisassor.barberhouse" target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="hover:text-barber-gold transition-colors duration-300">TikTok</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-            
-            <div class="border-t border-zinc-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
-                <p class="text-zinc-600 text-[10px] md:text-s tracking-[0.2em] uppercase font-bold">
+
+            <div
+                class="border-t border-zinc-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+                <p class="text-zinc-600 text-[10px] md:text-s tracking-[0.1em] md:tracking-[0.2em] uppercase font-bold">
                     © 2026 TRISASSOR BARBER HOUSE. All rights reserved.
                 </p>
-                <div class="text-center md:text-right text-zinc-600 text-[10px] md:text-xs tracking-[0.1em] md:tracking-[0.2em] uppercase font-bold leading-loose mt-4 md:mt-0">
-                    Designed by <span class="text-barber-gold">XAAS</span> with 
-                    <svg class="inline-block w-3 h-3 text-barber-gold mx-0.5 mb-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path></svg> 
+                <div
+                    class="text-center md:text-right text-zinc-600 text-[10px] md:text-xs tracking-[0.1em] md:tracking-[0.2em] uppercase font-bold leading-loose mt-4 md:mt-0">
+                    Designed by <span class="text-barber-gold">XAAS</span> with
+                    <svg class="inline-block w-3 h-3 text-barber-gold mx-0.5 mb-0.5" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path fill-rule="evenodd"
+                            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                            clip-rule="evenodd"></path>
+                    </svg>
                     Precision
                 </div>
             </div>
@@ -503,76 +902,8 @@
     </footer>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const navbar = document.getElementById('navbar');
-            window.addEventListener('scroll', () => {
-                
-                if (window.scrollY > 50) {
-                    navbar.classList.add('bg-barber-dark/95', 'backdrop-blur-sm', 'shadow-2xl');
-                } else {
-                    navbar.classList.remove('bg-barber-dark/95', 'backdrop-blur-sm', 'shadow-2xl');
-                }
-            });
+        document.addEventListener("DOMContentLoaded", function () {
 
-            // --- Logika Mobile Menu ---
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const iconOpen = document.getElementById('icon-open');
-            const iconClose = document.getElementById('icon-close');
-            const mobileLinks = document.querySelectorAll('.mobile-link');
-            const allMenuAnchors = mobileMenu.querySelectorAll('a');
-
-            let isMenuOpen = false;
-
-            function toggleMenu() {
-                isMenuOpen = !isMenuOpen;
-                
-                if (isMenuOpen) {
-                    // Munculkan background overlay
-                    mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
-                    mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
-                    
-                    // Transisi ikon (Hamburger muter jadi X)
-                    iconOpen.classList.add('opacity-0', '-rotate-90');
-                    iconClose.classList.remove('opacity-0', 'rotate-90');
-                    
-                    // Animasi teks menu meluncur naik
-                    mobileLinks.forEach(link => {
-                        link.classList.remove('translate-y-8', 'opacity-0');
-                        link.classList.add('translate-y-0', 'opacity-100');
-                    });
-
-                    // Kunci scroll halaman belakang
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    // Sembunyikan background overlay
-                    mobileMenu.classList.add('opacity-0', 'pointer-events-none');
-                    mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
-                    
-                    // Transisi ikon kembali ke Hamburger
-                    iconOpen.classList.remove('opacity-0', '-rotate-90');
-                    iconClose.classList.add('opacity-0', 'rotate-90');
-                    
-                    // Reset posisi teks menu
-                    mobileLinks.forEach(link => {
-                        link.classList.add('translate-y-8', 'opacity-0');
-                        link.classList.remove('translate-y-0', 'opacity-100');
-                    });
-
-                    // Kembalikan scroll halaman
-                    document.body.style.overflow = '';
-                }
-            }
-
-            // Pasang event klik ke tombol
-            mobileMenuBtn.addEventListener('click', toggleMenu);
-
-            // Jika user mengklik salah satu menu, tutup overlay-nya
-            allMenuAnchors.forEach(anchor => {
-                anchor.addEventListener('click', () => {
-                    if(isMenuOpen) toggleMenu();
-                });
-            });
 
             const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right, .offscreen-right');
             const scrollObserver = new IntersectionObserver((entries, observer) => {
@@ -588,38 +919,38 @@
 
             const counters = document.querySelectorAll('.counter');
             const statsContainer = document.getElementById('stats-container');
-            let hasCounted = false; 
+            let hasCounted = false;
 
             const animateCounters = () => {
                 counters.forEach(counter => {
                     const target = +counter.getAttribute('data-target');
-                    const duration = 7000; 
-                    const increment = target / (duration / 16); 
-                    
+                    const duration = 7000;
+                    const increment = target / (duration / 16);
+
                     let currentCount = 0;
-                    if(target > 1900 && target < 2100) {
-                        currentCount = 1900; 
+                    if (target > 1900 && target < 2100) {
+                        currentCount = 1900;
                     }
 
                     const updateCounter = () => {
                         currentCount += increment;
                         if (currentCount < target) {
                             counter.innerText = Math.ceil(currentCount);
-                            requestAnimationFrame(updateCounter); 
+                            requestAnimationFrame(updateCounter);
                         } else {
-                            counter.innerText = target; 
+                            counter.innerText = target;
                         }
                     };
                     updateCounter();
                 });
             };
 
-            if(statsContainer) {
+            if (statsContainer) {
                 const statsObserver = new IntersectionObserver((entries) => {
                     const [entry] = entries;
                     if (entry.isIntersecting && !hasCounted) {
                         animateCounters();
-                        hasCounted = true; 
+                        hasCounted = true;
                     }
                 }, { threshold: 0.5 });
                 statsObserver.observe(statsContainer);
@@ -628,16 +959,16 @@
             const serviceItems = document.querySelectorAll('.service-item');
             const previewImg = document.getElementById('service-preview-img');
 
-            if(serviceItems.length > 0 && previewImg) {
+            if (serviceItems.length > 0 && previewImg) {
                 serviceItems.forEach(item => {
-                    item.addEventListener('mouseenter', function() {
+                    item.addEventListener('mouseenter', function () {
                         const newImageSrc = this.getAttribute('data-image');
-                        if(previewImg.src !== newImageSrc) {
-                            previewImg.style.opacity = '0'; 
+                        if (previewImg.src !== newImageSrc) {
+                            previewImg.style.opacity = '0';
                             setTimeout(() => {
-                                previewImg.src = newImageSrc; 
-                                previewImg.style.opacity = '1'; 
-                            }, 300); 
+                                previewImg.src = newImageSrc;
+                                previewImg.style.opacity = '1';
+                            }, 300);
                         }
                     });
                 });
@@ -646,23 +977,23 @@
             const btnLoadMore = document.getElementById('btn-load-more');
             const hiddenGalleryItems = document.querySelectorAll('.hidden-gallery-item');
 
-            if(btnLoadMore) {
-                btnLoadMore.addEventListener('click', function() {
+            if (btnLoadMore) {
+                btnLoadMore.addEventListener('click', function () {
                     this.style.opacity = '0';
                     this.style.transform = 'scale(0.9)';
                     setTimeout(() => {
-                        this.style.display = 'none'; 
+                        this.style.display = 'none';
                         hiddenGalleryItems.forEach((item, index) => {
-                            item.classList.remove('hidden'); 
+                            item.classList.remove('hidden');
                             item.style.opacity = '0';
                             item.style.transform = 'translateY(50px)';
                             item.style.transition = 'all 0.8s cubic-bezier(0.25, 1, 0.5, 1)';
                             setTimeout(() => {
                                 item.style.opacity = '1';
                                 item.style.transform = 'translateY(0)';
-                            }, 100 + (index * 150)); 
+                            }, 100 + (index * 150));
                         });
-                    }, 300); 
+                    }, 300);
                 });
             }
 
@@ -670,20 +1001,87 @@
             const mapCoverImg = document.getElementById('map-cover-img');
             const mapOverlay = document.getElementById('map-overlay');
             const mapIframeWrapper = document.getElementById('map-iframe-wrapper');
-        
-            if(btnRevealMap) {
-                btnRevealMap.addEventListener('click', function() {
+
+            if (btnRevealMap) {
+                btnRevealMap.addEventListener('click', function () {
                     mapCoverImg.style.opacity = '0';
                     mapCoverImg.style.transform = 'scale(1.2)';
                     mapOverlay.style.opacity = '0';
                     mapOverlay.style.pointerEvents = 'none';
                     setTimeout(() => {
                         mapIframeWrapper.style.opacity = '1';
-                        mapIframeWrapper.style.pointerEvents = 'auto'; 
+                        mapIframeWrapper.style.pointerEvents = 'auto';
                     }, 300);
                 });
             }
+
+            // --- Logika Jam Operasional Dinamis ---
+            function updateOperatingStatus() {
+                const now = new Date();
+                const day = now.getDay(); // 0 = Sun, 1 = Mon, ..., 6 = Sat
+                const hours = now.getHours();
+                const minutes = now.getMinutes();
+                const totalMinutes = (hours * 60) + minutes;
+
+                const statusBadge = document.getElementById('shop-status-badge');
+                const badgeText = document.getElementById('shop-status-text');
+                const badgePing = document.getElementById('badge-ping');
+                const badgeDot = document.getElementById('badge-dot');
+
+                let isOpen = false;
+                let activeRowId = '';
+
+                // Schedule (in minutes from midnight)
+                const schedule = {
+                    monThu: { start: 9 * 60, end: 23 * 60 },
+                    fri: { start: 13 * 60, end: 22 * 60 },
+                    satSun: { start: 9 * 60, end: 21 * 60 }
+                };
+
+                // Determine current status
+                if (day >= 1 && day <= 4) { // Mon - Thu
+                    activeRowId = 'row-mon-thu';
+                    if (totalMinutes >= schedule.monThu.start && totalMinutes < schedule.monThu.end) isOpen = true;
+                } else if (day === 5) { // Fri
+                    activeRowId = 'row-fri';
+                    if (totalMinutes >= schedule.fri.start && totalMinutes < schedule.fri.end) isOpen = true;
+                } else { // Sat - Sun (6 or 0)
+                    activeRowId = 'row-sat-sun';
+                    if (totalMinutes >= schedule.satSun.start && totalMinutes < schedule.satSun.end) isOpen = true;
+                }
+
+                // Update Main Badge
+                if (isOpen) {
+                    statusBadge.className = 'flex items-center gap-2 bg-green-500/10 border border-green-500/20 py-1 px-3 rounded-full';
+                    badgeText.innerText = 'Buka Sekarang';
+                    badgeText.className = 'text-[10px] uppercase tracking-wider text-green-400 font-bold';
+                    badgePing.className = 'animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75';
+                    badgeDot.className = 'relative inline-flex rounded-full h-2 w-2 bg-green-500';
+                } else {
+                    statusBadge.className = 'flex items-center gap-2 bg-red-500/10 border border-red-500/20 py-1 px-3 rounded-full';
+                    badgeText.innerText = 'Tutup';
+                    badgeText.className = 'text-[10px] uppercase tracking-wider text-red-400 font-bold';
+                    badgePing.className = 'hidden';
+                    badgeDot.className = 'relative inline-flex rounded-full h-2 w-2 bg-red-500';
+                }
+
+                // Update Rows (Highight current day only)
+                const rows = ['row-mon-thu', 'row-fri', 'row-sat-sun'];
+                rows.forEach(rowId => {
+                    const row = document.getElementById(rowId);
+                    if (rowId === activeRowId) {
+                        row.classList.add('active-day');
+                    } else {
+                        row.classList.remove('active-day');
+                    }
+                });
+            }
+
+            // Initial run and interval
+            updateOperatingStatus();
+            setInterval(updateOperatingStatus, 60000); // Update every minute
         });
     </script>
 </body>
+
 </html>
