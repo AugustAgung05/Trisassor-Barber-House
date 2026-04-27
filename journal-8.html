@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panduan Memilih Barbershop yang Tepat | TRISASSOR Barber House</title>
+    <meta name="description"
+        content="Mencari barbershop yang pas itu kayak cari jodoh, butuh chemistry. Kenali tanda-tanda barbershop berkualitas agar setiap kunjunganmu selalu berakhir puas.">
+    <link rel="icon" type="image/png" href="logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        barber: {
+                            gold: '#C5A059',
+                            dark: '#09090b',
+                            gray: '#1A1A1A',
+                            light: '#f4f4f5'
+                        }
+                    },
+                    fontSize: { 's': '12px' },
+                    fontFamily: {
+                        'sans': ['Montserrat', 'sans-serif'],
+                        'display': ['Oswald', 'sans-serif'],
+                    },
+                    borderRadius: { '4xl': '2rem' },
+                    spacing: { '18': '4.5rem' },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 1s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Oswald:wght@500;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <style>
+        .reveal-up { opacity: 0; transform: translateY(50px); transition: all 1s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal-up.active { opacity: 1; transform: translate(0); }
+        .delay-150 { transition-delay: 0.15s; }
+        .delay-300 { transition-delay: 0.3s; }
+
+        .article-body p { margin-bottom: 1.5rem; line-height: 1.85; color: #a1a1aa; }
+        .article-body h3 { font-family: 'Oswald', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #fff; font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1rem; }
+        .article-body ul { margin-bottom: 1.5rem; padding-left: 0; list-style: none; }
+        .article-body ul li { position: relative; padding-left: 1.75rem; margin-bottom: 0.75rem; color: #a1a1aa; line-height: 1.75; }
+        .article-body ul li::before { content: ''; position: absolute; left: 0; top: 0.7rem; width: 12px; height: 1px; background-color: #C5A059; }
+        .article-body blockquote { border-left: 3px solid #C5A059; padding: 1rem 1.5rem; margin: 2rem 0; font-style: italic; font-family: 'Playfair Display', serif; font-size: 1.25rem; color: #f4f4f5; background: rgba(197, 160, 89, 0.05); }
+        .article-body strong { color: #fff; font-weight: 600; }
+    </style>
+</head>
+
+<body class="bg-barber-dark text-barber-light font-sans antialiased overflow-x-hidden">
+
+    <!-- Navbar -->
+    <div class="relative z-50">
+        <nav id="navbar"
+            class="fixed left-0 right-0 mx-auto z-50 flex justify-between items-center transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] top-0 w-full max-w-full bg-white/0 backdrop-blur-none shadow-none rounded-none py-5 px-6 md:px-18">
+            <a href="index.html" class="flex items-center gap-2 group z-50">
+                <img src="./logo.png" alt="Trisassor Logo"
+                    class="h-8 md:h-10 w-auto object-contain group-hover:scale-105 transition-transform duration-300 ml-2">
+                <span class="font-display text-base lg:text-lg font-bold tracking-widest text-white uppercase">trisassor</span>
+            </a>
+            <div class="hidden lg:flex items-center gap-6 xl:gap-8 text-xs uppercase tracking-widest font-semibold text-gray-300">
+                <a href="index.html" class="hover:text-barber-gold transition-colors duration-300">Beranda</a>
+                <a href="experience.html" class="hover:text-barber-gold transition-colors duration-300">Experience</a>
+                <a href="barbers.html" class="hover:text-barber-gold transition-colors duration-300">Kapster</a>
+                <a href="journal.html" class="text-barber-gold transition-colors duration-300">Journal</a>
+                <a href="faq.html" class="hover:text-barber-gold transition-colors duration-300">FAQ</a>
+            </div>
+            <div class="hidden lg:flex items-center gap-4">
+                <a href="#"
+                    class="bg-barber-gold hover:bg-white text-barber-dark font-bold text-xs uppercase tracking-widest py-2.5 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-barber-gold/20 mr-2">Reservasi</a>
+            </div>
+            <button id="mobile-menu-btn" class="lg:hidden text-white focus:outline-none z-50 relative w-8 h-8" aria-label="Toggle Menu">
+                <svg id="icon-open" class="w-7 h-7 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <svg id="icon-close" class="hidden w-7 h-7 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </nav>
+        <div id="mobile-menu"
+            class="hidden fixed inset-0 z-40 bg-zinc-950/95 backdrop-blur-xl flex-col justify-center items-center opacity-0 transition-opacity duration-300">
+            <div class="flex flex-col items-center gap-8 text-center w-full px-6">
+                <a href="index.html" class="text-2xl font-display font-bold uppercase tracking-widest text-white hover:text-barber-gold transition-colors duration-300 mobile-link">Beranda</a>
+                <a href="experience.html" class="text-2xl font-display font-bold uppercase tracking-widest text-white hover:text-barber-gold transition-colors duration-300 mobile-link">Experience</a>
+                <a href="barbers.html" class="text-2xl font-display font-bold uppercase tracking-widest text-white hover:text-barber-gold transition-colors duration-300 mobile-link">Kapster</a>
+                <a href="journal.html" class="text-2xl font-display font-bold uppercase tracking-widest text-barber-gold transition-colors duration-300 mobile-link">Journal</a>
+                <a href="faq.html" class="text-2xl font-display font-bold uppercase tracking-widest text-white hover:text-barber-gold transition-colors duration-300 mobile-link">FAQ</a>
+                <div class="w-24 h-px bg-zinc-800 my-4"></div>
+                <a href="#" class="bg-barber-gold text-barber-dark font-bold text-sm uppercase tracking-widest py-3 px-10 rounded-full mt-4 mobile-link">Reservasi</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <header class="relative pt-32 md:pt-40 pb-16 md:pb-20 overflow-hidden border-b border-zinc-900 bg-zinc-950">
+        <div class="absolute inset-0 opacity-20">
+            <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=2000" alt="" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-b from-zinc-950/80 via-zinc-950/90 to-barber-dark"></div>
+        </div>
+        <div class="max-w-4xl mx-auto px-6 md:px-12 relative z-10">
+            <nav class="flex items-center gap-2 text-xs uppercase tracking-widest text-zinc-500 mb-8 reveal-up">
+                <a href="index.html" class="hover:text-barber-gold transition-colors">Beranda</a>
+                <span>/</span>
+                <a href="journal.html" class="hover:text-barber-gold transition-colors">Journal</a>
+                <span>/</span>
+                <span class="text-barber-gold truncate">Memilih Barbershop</span>
+            </nav>
+            <span class="inline-block bg-barber-gold text-barber-dark text-[10px] font-bold uppercase tracking-wider py-1.5 px-4 rounded-full shadow-lg mb-6 reveal-up">Tips & Trik</span>
+            <h1 class="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-white uppercase tracking-tight mb-8 leading-tight reveal-up delay-150">
+                Panduan Memilih Barbershop <span class="text-barber-gold">yang Tepat</span>
+            </h1>
+            <div class="flex flex-wrap items-center gap-4 md:gap-6 text-zinc-500 text-xs md:text-sm reveal-up delay-300">
+                <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-barber-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    <span>02 Maret 2026</span>
+                </div>
+                
+            </div>
+        </div>
+    </header>
+
+    <!-- Article Content -->
+    <main class="py-16 md:py-20 relative z-10">
+        <div class="max-w-4xl mx-auto px-6 md:px-12">
+
+            <figure class="rounded-2xl overflow-hidden mb-12 border border-zinc-800 reveal-up">
+                <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=1600" alt="Panduan Memilih Barbershop yang Tepat" class="w-full h-[300px] md:h-[500px] object-cover">
+            </figure>
+
+            <article class="article-body reveal-up delay-150">
+                <p class="text-lg md:text-xl text-zinc-300 leading-relaxed font-medium mb-8">
+                    Jujur aja, pernah nggak kamu keluar dari barbershop terus langsung pengen pakai topi? Entah potongannya nggak sesuai ekspektasi, atau kapsternya lebih sibuk ngobrol daripada fokus motong. <strong>Memilih barbershop yang tepat itu sama pentingnya dengan memilih gaya rambut itu sendiri.</strong> Karena sebaik apapun referensi yang kamu bawa, kalau tangan yang motong nggak mumpuni, hasilnya tetap nggak akan memuaskan.
+                </p>
+
+                <p>
+                    Sayangnya, banyak cowok yang masih asal masuk barbershop cuma karena dekat rumah atau kebetulan lagi sepi. Padahal, investasi waktu 30 menit untuk riset kecil bisa menyelamatkan penampilanmu selama berminggu-minggu. Yuk, kita bahas satu per satu hal yang perlu kamu perhatikan.
+                </p>
+
+                <h3>Lihat Portofolio, Bukan Cuma Interior</h3>
+                <p>
+                    Barbershop dengan desain interior keren memang enak dipandang, tapi jangan sampai kamu terjebak estetika doang. Yang lebih penting adalah <strong>portofolio hasil potongan</strong> kapsternya. Cek Instagram atau media sosial barbershop tersebut. Apakah mereka rutin memposting hasil kerja? Apakah potongannya rapi, presisi, dan konsisten? Barbershop yang percaya diri dengan kualitasnya pasti nggak ragu menampilkan hasilnya secara publik.
+                </p>
+
+                <h3>Perhatikan Kebersihan dan Higienitas</h3>
+                <blockquote>
+                    "Barbershop yang baik bukan cuma soal hasil akhir, tapi juga soal proses yang aman dan higienis."
+                </blockquote>
+                <p>
+                    Detail kecil seperti sisir yang disterilisasi setelah setiap klien, cape yang diganti, dan alat cukur yang dibersihkan. Ini semua bukan hal sepele. Infeksi kulit kepala dari alat yang kotor itu nyata, dan kamu berhak mendapatkan layanan yang bersih. Kalau barbershop terlihat jorok dari luar, bayangkan kondisi alat-alatnya di dalam.
+                </p>
+
+                <h3>Komunikasi Kapster Itu Segalanya</h3>
+                <p>
+                    Kapster yang baik itu bukan cuma jago motong, dia juga jago <em>mendengarkan</em>. Sebelum mulai, kapster profesional akan bertanya soal preferensimu, kebiasaan styling sehari-hari, bahkan jenis pekerjaanmu. Kenapa? Karena semua itu memengaruhi rekomendasi potongan yang paling cocok. Kalau kapsternya langsung main gunting tanpa diskusi, itu red flag.
+                </p>
+
+                <h3>Hal-Hal yang Sering Diabaikan</h3>
+                <p>Selain faktor utama di atas, beberapa detail ini juga layak jadi pertimbangan:</p>
+                <ul>
+                    <li><strong>Sistem booking:</strong> barbershop yang punya sistem reservasi online menunjukkan bahwa mereka menghargai waktumu dan punya manajemen yang rapi.</li>
+                    <li><strong>Konsistensi kapster:</strong> idealnya, kamu punya satu kapster langganan yang sudah paham tekstur rambut dan preferensimu.</li>
+                    <li><strong>Harga vs. nilai:</strong> barbershop murah belum tentu hemat. Kalau hasilnya jelek dan kamu harus potong ulang di tempat lain, justru lebih mahal jadinya.</li>
+                    <li><strong>Suasana:</strong> barbershop yang nyaman bikin kamu rileks, dan klien yang rileks biasanya lebih puas dengan hasilnya.</li>
+                    <li><strong>Review dari pelanggan lain:</strong> Google Review atau testimoni di media sosial bisa jadi gambaran jujur soal kualitas layanan.</li>
+                </ul>
+
+                <h3>Kapan Saatnya Pindah Barbershop?</h3>
+                <p>
+                    Loyalitas itu bagus, tapi kalau kamu sudah beberapa kali kecewa dengan hasil potongan di tempat yang sama, nggak ada salahnya eksplorasi. Tanda-tanda kamu perlu pindah: hasil potongan nggak konsisten, kapsternya sering ganti-ganti, atau kamu merasa nggak didengarkan saat konsultasi. Rambut tumbuh lagi memang, tapi waktu dan mood yang terbuang karena potongan gagal itu nggak bisa diulang.
+                </p>
+
+                <h3>Penutup</h3>
+                <p>
+                    Barbershop yang tepat itu bukan cuma tempat potong rambut, tapi juga bagian dari rutinitas <em>self-care</em> yang bikin kamu merasa lebih baik tentang diri sendiri. Luangkan waktu untuk riset, coba beberapa tempat, dan kalau sudah nemu yang cocok, jaga hubungan baik dengan kapstermu. Di TRISASSOR, kami percaya bahwa setiap klien layak mendapat pengalaman grooming terbaik, dari konsultasi awal sampai sentuhan terakhir.
+                </p>
+            </article>
+
+            <div class="mt-16 pt-8 border-t border-zinc-900 flex flex-col md:flex-row md:justify-between md:items-center gap-6 reveal-up">
+               
+                <a href="journal.html" class="inline-flex items-center gap-2 text-barber-gold font-bold uppercase tracking-widest text-xs hover:text-white transition-colors duration-300">
+                    <svg class="w-4 h-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    Kembali ke Journal
+                </a>
+            </div>
+
+            <div class="mt-16 bg-zinc-950 border border-zinc-900 rounded-2xl p-8 md:p-12 text-center reveal-up">
+                <h3 class="font-display text-2xl md:text-3xl font-bold text-white uppercase tracking-widest mb-4">Cari Barbershop yang Pas?</h3>
+                <p class="text-zinc-400 max-w-xl mx-auto text-sm md:text-base leading-relaxed mb-8">Datang ke TRISASSOR dan rasakan sendiri standar grooming yang kami jaga setiap hari. Konsultasi gratis untuk kunjungan pertamamu.</p>
+                <a href="#" class="inline-flex items-center gap-3 bg-barber-gold hover:bg-white text-barber-dark font-bold py-4 px-10 rounded-full transition-all duration-500 hover:shadow-[0_0_30px_rgba(197,160,89,0.3)] hover:-translate-y-1 uppercase tracking-widest text-sm">Reservasi Sekarang</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black pt-16 pb-8 relative overflow-hidden border-t border-zinc-900 z-10">
+        <div class="absolute bottom-[25%] sm:bottom-[0%] left-0 w-full overflow-hidden flex justify-center pointer-events-none z-0 opacity-[0.15] sm:opacity-[0.07] select-none">
+            <span class="font-display text-[7.2vw] md:text-[7.2vw] font-bold text-white whitespace-nowrap leading-none uppercase tracking-widest">TRISASSOR BARBER HOUSE</span>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+            <div class="mb-20 reveal-up">
+                <a href="index.html" class="inline-flex items-center gap-3 mb-6 group">
+                    <img src="logo.png" alt="TRISASSOR Logo" class="h-10 md:h-12 w-auto object-contain group-hover:scale-110 transition-transform duration-300">
+                    <span class="font-display text-xl md:text-2xl font-bold tracking-widest text-white uppercase">trisassor</span>
+                </a>
+                <p class="text-zinc-500 max-w-md text-s md:text-base leading-relaxed">Mendefinisikan ulang standar maskulin. Kami tidak sekadar memotong rambut, kami memahat karakter untuk para pria modern.</p>
+            </div>
+            <div class="border-t border-zinc-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+                <p class="text-zinc-600 text-[10px] md:text-s tracking-[0.1em] md:tracking-[0.2em] uppercase font-bold">© 2026 TRISASSOR BARBER HOUSE. All rights reserved.</p>
+                <div class="text-center md:text-right text-zinc-600 text-[10px] md:text-xs tracking-[0.1em] md:tracking-[0.2em] uppercase font-bold leading-loose mt-4 md:mt-0">
+                    Designed by <span class="text-barber-gold">XAAS</span> with
+                    <svg class="inline-block w-3 h-3 text-barber-gold mx-0.5 mb-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/></svg>
+                    Precision
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navbar = document.getElementById('navbar');
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const iconOpen = document.getElementById('icon-open');
+            const iconClose = document.getElementById('icon-close');
+            let isMenuOpen = false;
+            function handleScroll() {
+                if (window.scrollY > 20) {
+                    navbar.className = "fixed left-0 right-0 mx-auto z-50 flex justify-between items-center transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] top-4 w-[95%] max-w-6xl bg-white/10 backdrop-blur-lg shadow-2xl rounded-4xl py-3 px-6 md:px-2";
+                } else {
+                    navbar.className = "fixed left-0 right-0 mx-auto z-50 flex justify-between items-center transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] top-0 w-full max-w-full bg-white/0 backdrop-blur-none shadow-none rounded-none py-5 px-6 md:px-18";
+                }
+            }
+            handleScroll();
+            window.addEventListener('scroll', handleScroll);
+            mobileMenuBtn.addEventListener('click', function () {
+                isMenuOpen = !isMenuOpen;
+                if (isMenuOpen) {
+                    mobileMenu.classList.remove('hidden');
+                    mobileMenu.classList.add('flex');
+                    setTimeout(() => { mobileMenu.classList.remove('opacity-0'); mobileMenu.classList.add('opacity-100'); }, 10);
+                    iconOpen.classList.add('hidden');
+                    iconClose.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    mobileMenu.classList.remove('opacity-100');
+                    mobileMenu.classList.add('opacity-0');
+                    setTimeout(() => { mobileMenu.classList.add('hidden'); mobileMenu.classList.remove('flex'); }, 300);
+                    iconOpen.classList.remove('hidden');
+                    iconClose.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }
+            });
+            document.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', () => { if (isMenuOpen) mobileMenuBtn.click(); });
+            });
+
+            const revealElements = document.querySelectorAll('.reveal-up');
+            const scrollObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+            revealElements.forEach(el => scrollObserver.observe(el));
+        });
+    </script>
+
+    <div class="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[100] animate-fade-in-up">
+        <div class="bg-zinc-900/70 backdrop-blur-xl border border-white/10 rounded-full p-1.5 md:p-2 flex items-center gap-1.5 md:gap-2 shadow-2xl">
+            <a href="https://www.instagram.com/trisassorbarberhouse/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="flex items-center justify-center w-9 h-9 md:w-10 md:h-10 rounded-full bg-white/5 hover:bg-barber-gold/20 text-white hover:text-barber-gold transition-all duration-300 group">
+                <svg class="w-4 h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://www.tiktok.com/@trisassor.barberhouse" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="flex items-center justify-center w-9 h-9 md:w-10 md:h-10 rounded-full bg-white/5 hover:bg-barber-gold/20 text-white hover:text-barber-gold transition-all duration-300 group">
+                <svg class="w-4 h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z"/></svg>
+            </a>
+        </div>
+    </div>
+
+</body>
+
+</html>
