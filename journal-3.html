@@ -50,13 +50,26 @@
         .delay-150 { transition-delay: 0.15s; }
         .delay-300 { transition-delay: 0.3s; }
 
-        .article-body p { margin-bottom: 1.5rem; line-height: 1.85; color: #a1a1aa; }
-        .article-body h3 { font-family: 'Oswald', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #fff; font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1rem; }
-        .article-body ul { margin-bottom: 1.5rem; padding-left: 0; list-style: none; }
-        .article-body ul li { position: relative; padding-left: 1.75rem; margin-bottom: 0.75rem; color: #a1a1aa; line-height: 1.75; }
-        .article-body ul li::before { content: ''; position: absolute; left: 0; top: 0.7rem; width: 12px; height: 1px; background-color: #C5A059; }
-        .article-body blockquote { border-left: 3px solid #C5A059; padding: 1rem 1.5rem; margin: 2rem 0; font-style: italic; font-family: 'Playfair Display', serif; font-size: 1.25rem; color: #f4f4f5; background: rgba(197, 160, 89, 0.05); }
+        .article-body { font-size: 0.95rem; }
+        .article-body p { margin-bottom: 1.25rem; line-height: 1.8; color: #a1a1aa; text-align: justify; }
+        .article-body h2 { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.5rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1rem; }
+        .article-body h3 { font-family: 'Oswald', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #fff; font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.75rem; }
+        .article-body ul { margin-bottom: 1.25rem; padding-left: 0; list-style: none; }
+        .article-body ul li { position: relative; padding-left: 1.5rem; margin-bottom: 0.75rem; color: #a1a1aa; line-height: 1.75; text-align: justify; }
+        .article-body ul li::before { content: ''; position: absolute; left: 0; top: 0.7rem; width: 12px; height: 1px; background-color: #52525b; }
+        .article-body blockquote { border-left: 3px solid #C5A059; padding: 1rem 1.25rem; margin: 1.5rem 0; font-style: italic; font-family: 'Playfair Display', serif; font-size: 0.95rem; color: #f4f4f5; background: rgba(197, 160, 89, 0.05); }
         .article-body strong { color: #fff; font-weight: 600; }
+        .article-body ul li strong { display: block; margin-bottom: 0.25rem; }
+
+        @media (min-width: 768px) {
+            .article-body { font-size: 1.05rem; }
+            .article-body p { margin-bottom: 1.5rem; line-height: 1.85; }
+            .article-body h2 { font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem; }
+            .article-body h3 { font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1rem; }
+            .article-body ul { margin-bottom: 1.5rem; }
+            .article-body ul li { padding-left: 1.75rem; }
+            .article-body blockquote { padding: 1rem 1.5rem; margin: 2rem 0; font-size: 1.1rem; }
+        }
     </style>
 </head>
 
@@ -106,43 +119,48 @@
     </div>
 
     <!-- Hero -->
-    <header class="relative pt-32 md:pt-40 pb-16 md:pb-20 overflow-hidden border-b border-zinc-900 bg-zinc-950">
+    <header class="relative pt-32 md:pt-40 pb-6 md:pb-8 overflow-hidden border-b border-zinc-900 bg-zinc-950">
         <div class="absolute inset-0 opacity-20">
             <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=2000" alt="" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-b from-zinc-950/80 via-zinc-950/90 to-barber-dark"></div>
         </div>
         <div class="max-w-4xl mx-auto px-6 md:px-12 relative z-10">
-            <nav class="flex items-center gap-2 text-xs uppercase tracking-widest text-zinc-500 mb-8 reveal-up">
+            <nav class="flex items-center gap-1 text-[10px] md:text-xs uppercase tracking-widest text-zinc-500 mb-8">
                 <a href="index.html" class="hover:text-barber-gold transition-colors">Beranda</a>
                 <span>/</span>
                 <a href="journal.html" class="hover:text-barber-gold transition-colors">Journal</a>
                 <span>/</span>
                 <span class="text-barber-gold truncate">Pomade vs Clay vs Wax</span>
             </nav>
-            <span class="inline-block bg-barber-gold text-barber-dark text-[10px] font-bold uppercase tracking-wider py-1.5 px-4 rounded-full shadow-lg mb-6 reveal-up">Gaya Hidup</span>
-            <h1 class="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-white uppercase tracking-tight mb-8 leading-tight reveal-up delay-150">
+            <span class="inline-block bg-barber-gold text-barber-dark text-[10px] font-bold uppercase tracking-wider py-1.5 px-4 rounded-full shadow-lg mb-6">Gaya Hidup</span>
+            <h1 class="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-white uppercase tracking-tight  leading-tight">
                 Pomade vs Clay vs Wax: <span class="text-barber-gold">Mana yang Pas Buatmu?</span>
             </h1>
-            <div class="flex flex-wrap items-center gap-4 md:gap-6 text-zinc-500 text-xs md:text-sm reveal-up delay-300">
+            <div class="flex flex-wrap items-center gap-3 text-zinc-300 text-xs md:text-sm mt-2">
                 <div class="flex items-center gap-2">
                     <svg class="w-4 h-4 text-barber-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                     <span>12 April 2026</span>
                 </div>
-                
+                <span class="text-zinc-500 hidden sm:inline-block">•</span>
+                <span class="text-zinc-500 hidden sm:inline-block">•</span>
+                <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-barber-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
+                    <span>Ditulis oleh Tim Trisassor</span>
+                </div>
             </div>
         </div>
     </header>
 
     <!-- Article Content -->
-    <main class="py-16 md:py-20 relative z-10">
+    <main class="pt-6 md:pt-10 pb-16 md:pb-20 relative z-10">
         <div class="max-w-4xl mx-auto px-6 md:px-12">
 
-            <figure class="rounded-2xl overflow-hidden mb-12 border border-zinc-800 reveal-up">
+            <figure class="rounded-2xl overflow-hidden mb-8 md:mb-12 border border-zinc-800">
                 <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=1600" alt="Pomade vs Clay vs Wax" class="w-full h-[300px] md:h-[500px] object-cover">
             </figure>
 
-            <article class="article-body reveal-up delay-150">
-                <p class="text-lg md:text-xl text-zinc-300 leading-relaxed font-medium mb-8">
+            <article class="article-body">
+                <p class="text-base md:text-lg text-zinc-300 leading-relaxed font-medium mb-6 md:mb-8">
                     Kita perlu ngobrol soal satu hal yang sering bikin cowok bingung di depan rak minimarket: <strong>apa bedanya pomade, clay, sama wax?</strong> Ketiganya kelihatan mirip, dikemas mirip, harganya kadang beda tipis. Tapi salah pilih? Rambut yang harusnya keren malah lepek kayak habis kehujanan.
                 </p>
 
@@ -207,7 +225,7 @@
                 </p>
             </article>
 
-            <div class="mt-16 pt-8 border-t border-zinc-900 flex flex-col md:flex-row md:justify-between md:items-center gap-6 reveal-up">
+            <div class="mt-16 pt-8 border-t border-zinc-900 flex flex-col md:flex-row md:justify-between md:items-center gap-6">
                
                 <a href="journal.html" class="inline-flex items-center gap-2 text-barber-gold font-bold uppercase tracking-widest text-xs hover:text-white transition-colors duration-300">
                     <svg class="w-4 h-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
@@ -215,7 +233,7 @@
                 </a>
             </div>
 
-            <div class="mt-16 bg-zinc-950 border border-zinc-900 rounded-2xl p-8 md:p-12 text-center reveal-up">
+            <div class="mt-16 bg-zinc-950 border border-zinc-900 rounded-2xl p-8 md:p-12 text-center">
                 <h3 class="font-display text-2xl md:text-3xl font-bold text-white uppercase tracking-widest mb-4">Konsultasi Produk Tepat</h3>
                 <p class="text-zinc-400 max-w-xl mx-auto text-sm md:text-base leading-relaxed mb-8">Tanyakan langsung ke kapster TRISASSOR produk styling apa yang paling cocok untuk tekstur rambut dan gayamu.</p>
                 <a href="#" class="inline-flex items-center gap-3 bg-barber-gold hover:bg-white text-barber-dark font-bold py-4 px-10 rounded-full transition-all duration-500 hover:shadow-[0_0_30px_rgba(197,160,89,0.3)] hover:-translate-y-1 uppercase tracking-widest text-sm">Reservasi Sekarang</a>
@@ -229,7 +247,7 @@
             <span class="font-display text-[7.2vw] md:text-[7.2vw] font-bold text-white whitespace-nowrap leading-none uppercase tracking-widest">TRISASSOR BARBER HOUSE</span>
         </div>
         <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-            <div class="mb-20 reveal-up">
+            <div class="mb-20">
                 <a href="index.html" class="inline-flex items-center gap-3 mb-6 group">
                     <img src="logo.png" alt="TRISASSOR Logo" class="h-10 md:h-12 w-auto object-contain group-hover:scale-110 transition-transform duration-300">
                     <span class="font-display text-xl md:text-2xl font-bold tracking-widest text-white uppercase">trisassor</span>
@@ -313,3 +331,4 @@
 </body>
 
 </html>
+
